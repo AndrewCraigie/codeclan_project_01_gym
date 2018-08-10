@@ -10,7 +10,7 @@ class PersonSession
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @date_time_added = ['date_time_added'] # TODO check input output format
+    @date_time_added = ['date_time_added'] # TODO check input output format TIMESTAMP
     @reserve = options['reserve'].downcase == 'true'  # Convert to bool TODO check this
     @person_id = options['person_id'].to_i()
     @session_id = options['session_id'].to_i()

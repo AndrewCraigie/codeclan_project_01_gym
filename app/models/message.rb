@@ -5,12 +5,12 @@ require_relative( '../db/sql_runner' )
 class Message
 
   attr_reader :id
-  attr_accessor :message, :date_time, :person_id
+  attr_accessor :message, :date_time_added, :person_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @message = options['message']
-    @date_time = options['date_time']  # Check input and output format
+    @date_time_added = options['date_time_added']  # Check input and output format
     @person_id = options['person_id'].to_i()
   end
 
@@ -39,11 +39,11 @@ class Message
 
   def save()
     sql = "INSERT INTO messages
-          (message, date_time, person_id)
+          (message, date_time_added, person_id)
           VALUES
           ($1, $2, $3)
           RETURNING id"
-    values = [@message, @date_time, @person_id]
+    values = [@message, @date_time_added, @person_id]
     result = SqlRunner.run(sql).first()
     @id = result['id'].to_i()
     return @id
@@ -52,11 +52,11 @@ class Message
   def update()
       sql = "UPDATE messages
       SET
-      (message, date_time, person_id)
+      (message, date_time_added, person_id)
        =
       ($1, $2, $3)
       WHERE id = $4"
-      values = [@message, @date_time, @person_id, @id]
+      values = [@message, @date_time_added, @person_id, @id]
       SqlRunner.run(sql, values)
     end
 
