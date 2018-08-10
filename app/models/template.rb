@@ -2,7 +2,7 @@
 require_relative( '../db/sql_runner' )
 
 
-class Membership
+class ClassName
 
   attr_reader :id
 
@@ -14,28 +14,28 @@ class Membership
   # --- Class methods
 
   def delete_all()
-    sql = "DELETE FROM memberships"
+    sql = "DELETE FROM classname"
     SqlRunner.run(sql)
   end
 
   def all()
-    sql = "SELECT * FROM memberships"
+    sql = "SELECT * FROM tablename"
     results = SqlRunner.run(sql)
-    return results.map { |membership| Membership.new(membership)}
+    return results.map { |classname| Classname.new(result)}
   end
 
   def find_by_id(id)
-    sql = "SELECT * FROM memberships
+    sql = "SELECT * FROM tablename
           WHERE id = $1"
     value = [id]
     result = SqlRunner.run(sql, value).first
-    return Membership.new(result)
+    return Classname.new(result)
   end
 
   # --- Instance methods
 
   def save()
-    sql = "INSERT INTO memberships
+    sql = "INSERT INTO tablename
           ()
           VALUES
           ()
@@ -46,7 +46,7 @@ class Membership
   end
 
   def update()
-      sql = "UPDATE memberships
+      sql = "UPDATE tablename
       SET
       (
 
@@ -60,7 +60,7 @@ class Membership
     end
 
   def delete()
-    sql = "DELETE FROM memberships
+    sql = "DELETE FROM tablename
           WHERE id = $1"
     value = [@id]
     SqlRunner.run(sql, value)
