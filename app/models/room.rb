@@ -5,10 +5,11 @@ require_relative( '../db/sql_runner' )
 class Room
 
   attr_reader :id
+  attr_accessor :name
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-
+    @name = options['name']
   end
 
   # --- Class methods
@@ -21,7 +22,7 @@ class Room
   def all()
     sql = "SELECT * FROM rooms"
     results = SqlRunner.run(sql)
-    return results.map { |classname| Room.new(result)}
+    return results.map { |room| Room.new(room)}
   end
 
   def find_by_id(id)
@@ -36,11 +37,11 @@ class Room
 
   def save()
     sql = "INSERT INTO rooms
-          ()
+          (name)
           VALUES
-          ()
+          ($1)
           RETURNING id"
-    values = []
+    values = [@name]
     result = SqlRunner.run(sql).first()
     @id = result['id'].to_i()
   end
@@ -48,14 +49,11 @@ class Room
   def update()
       sql = "UPDATE rooms
       SET
-      (
-
-      ) =
-      (
-
-      )
-      WHERE id = $"
-      values = [, @id]
+      (name)
+      =
+      ($1)
+      WHERE id = $2"
+      values = [@name, @id]
       SqlRunner.run(sql, values)
     end
 

@@ -2,7 +2,7 @@
 require_relative( '../db/sql_runner' )
 
 
-class MembershipType
+class GymClassCategory
 
   attr_reader :id
   attr_accessor :name, :description
@@ -16,28 +16,28 @@ class MembershipType
   # --- Class methods
 
   def delete_all()
-    sql = "DELETE FROM membership_types"
+    sql = "DELETE FROM gym_class_categories"
     SqlRunner.run(sql)
   end
 
   def all()
-    sql = "SELECT * FROM membership_types"
+    sql = "SELECT * FROM gym_class_categories"
     results = SqlRunner.run(sql)
-    return results.map { |classname| MembershipType.new(result)}
+    return results.map { |gym_class_category| GymClassCategory.new(gym_class_category)}
   end
 
   def find_by_id(id)
-    sql = "SELECT * FROM membership_types
+    sql = "SELECT * FROM gym_class_categories
           WHERE id = $1"
     value = [id]
     result = SqlRunner.run(sql, value).first
-    return MembershipType.new(result)
+    return GymClassCategory.new(result)
   end
 
   # --- Instance methods
 
   def save()
-    sql = "INSERT INTO membership_types
+    sql = "INSERT INTO gym_class_categories
           (name, description)
           VALUES
           ($1, $2)
@@ -48,7 +48,7 @@ class MembershipType
   end
 
   def update()
-      sql = "UPDATE membership_types
+      sql = "UPDATE gym_class_categories
       SET
       (name, description)
        =
@@ -59,7 +59,7 @@ class MembershipType
     end
 
   def delete()
-    sql = "DELETE FROM membership_types
+    sql = "DELETE FROM gym_class_categories
           WHERE id = $1"
     value = [@id]
     SqlRunner.run(sql, value)

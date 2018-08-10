@@ -5,10 +5,11 @@ require_relative( '../db/sql_runner' )
 class Intensity
 
   attr_reader :id
+  attr_accessor :name
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-
+    @name = options['name']
   end
 
   # --- Class methods
@@ -36,26 +37,24 @@ class Intensity
 
   def save()
     sql = "INSERT INTO intensities
-          ()
+          (name)
           VALUES
-          ()
+          ($1)
           RETURNING id"
-    values = []
+    values = [@name]
     result = SqlRunner.run(sql).first()
     @id = result['id'].to_i()
+    return @id
   end
 
   def update()
       sql = "UPDATE intensities
       SET
-      (
-
-      ) =
-      (
-
-      )
-      WHERE id = $"
-      values = [, @id]
+      (name)
+       =
+      ($1)
+      WHERE id = $2"
+      values = [@name, @id]
       SqlRunner.run(sql, values)
     end
 

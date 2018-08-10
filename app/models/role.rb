@@ -5,10 +5,11 @@ require_relative( '../db/sql_runner' )
 class Role
 
   attr_reader :id
+  attr_accessor :name
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-
+    @name = options['name']
   end
 
   # --- Class methods
@@ -36,11 +37,11 @@ class Role
 
   def save()
     sql = "INSERT INTO roles
-          ()
+          (name)
           VALUES
-          ()
+          ($1)
           RETURNING id"
-    values = []
+    values = [@name]
     result = SqlRunner.run(sql).first()
     @id = result['id'].to_i()
   end
@@ -48,14 +49,11 @@ class Role
   def update()
       sql = "UPDATE roles
       SET
-      (
-
-      ) =
-      (
-
-      )
-      WHERE id = $"
-      values = [, @id]
+      (name)
+      =
+      ($1)
+      WHERE id = $2"
+      values = [@name, @id]
       SqlRunner.run(sql, values)
     end
 

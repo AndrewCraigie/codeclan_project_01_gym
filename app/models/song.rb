@@ -5,10 +5,13 @@ require_relative( '../db/sql_runner' )
 class Song
 
   attr_reader :id
+  attr_accessor :name, :artist, :duration
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-
+    @name = options['name']
+    @artist = options['artist']
+    @duration = options['duration']  # Check input and output formats
   end
 
   # --- Class methods
@@ -36,11 +39,11 @@ class Song
 
   def save()
     sql = "INSERT INTO songs
-          ()
+          (name, artist, duration)
           VALUES
-          ()
+          ($1, $2, $3)
           RETURNING id"
-    values = []
+    values = [@name, @artist, @duration]
     result = SqlRunner.run(sql).first()
     @id = result['id'].to_i()
   end
@@ -48,14 +51,11 @@ class Song
   def update()
       sql = "UPDATE songs
       SET
-      (
-
-      ) =
-      (
-
-      )
-      WHERE id = $"
-      values = [, @id]
+      (name, artist, duration)
+      =
+      ($1, $2, $3)
+      WHERE id = $4"
+      values = [@name, @artist, @duration, @id]
       SqlRunner.run(sql, values)
     end
 
