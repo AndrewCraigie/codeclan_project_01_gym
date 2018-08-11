@@ -18,6 +18,7 @@ Role.delete_all()
 MembershipType.delete_all()
 Room.delete_all()
 GymClassCategory.delete_all()
+Intensity.delete_all()
 
 role1 = Role.new({
   'name' => 'customer'
@@ -111,3 +112,17 @@ gym_class_category3.save()
 gym_class_category4.save()
 gym_class_category5.save()
 gym_class_category6.save()
+
+intensity1 = Intensity.new({
+  'name' => 'Beginner'
+  })
+intensity2 = Intensity.new({
+  'name' => 'Intermediate'
+  })
+intensity3 = Intensity.new({
+  'name' => 'Advanced'
+  })
+
+intensity1.save()
+intensity2.save()
+intensity3.save()

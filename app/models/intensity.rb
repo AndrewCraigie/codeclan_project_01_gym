@@ -37,9 +37,7 @@ class Intensity
 
   def save()
     sql = "INSERT INTO intensities
-          (name)
-          VALUES
-          ($1)
+          (name) VALUES ($1)
           RETURNING id"
     value = [@name]
     result = SqlRunner.run(sql, value).first()
@@ -50,9 +48,9 @@ class Intensity
   def update()
       sql = "UPDATE intensities
       SET
-      (name)
+      name
        =
-      ($1)
+      $1
       WHERE id = $2"
       values = [@name, @id]
       SqlRunner.run(sql, values)
