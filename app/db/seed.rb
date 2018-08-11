@@ -15,6 +15,8 @@ require_relative ('../models/payment')
 
 Person.delete_all()
 
+Membership.delete_all()
+
 Role.delete_all()
 MembershipType.delete_all()
 Room.delete_all()
@@ -249,3 +251,20 @@ person2 = Person.new({
 person1.save()
 person2.save()
 person3.save()
+
+membership1 = Membership.new({
+  'membership_number' => 1,
+  'start_date' => '2016-09-10',
+  'end_date' => '2017-09-09',
+  'membership_type_id' => membership_type1.id
+})
+
+membership2 = Membership.new({
+  'membership_number' => 2,
+  'start_date' => '2017-06-21',
+  'end_date' => '2018-06-20',
+  'membership_type_id' => membership_type2.id
+})
+
+membership1.save()
+membership2.save()

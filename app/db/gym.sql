@@ -50,8 +50,8 @@ CREATE TABLE membership_types(
 CREATE TABLE memberships(
   id SERIAL8 PRIMARY KEY,
   membership_number INT,
-  start_date TIMESTAMP,
-  end_date TIMESTAMP,
+  start_date DATE,
+  end_date DATE,
   membership_type_id INT REFERENCES membership_types(id) ON DELETE CASCADE
 );
 
