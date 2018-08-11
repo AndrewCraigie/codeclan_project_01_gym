@@ -1,0 +1,8 @@
+<h1>Show Role</h1>
+
+<form class="role-form" action="/roles/<%= @role.id %>" method="post">
+  <label for="role-name"></label>
+  <input type="text" name="name" value="<%= @role.name %>">
+  <input type="submit" name="delete" value="DELETE ROLL ⚠️" formaction="/roles/<%= @role.id %>/delete">
+  <input type="submit" name="submit" value="Update Role">
+</form>
