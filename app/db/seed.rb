@@ -12,7 +12,9 @@ require_relative ('../models/person_session')
 require_relative ('../models/person')
 require_relative ('../models/message')
 require_relative ('../models/payment')
+require_relative ('../models/person_membership')
 
+PersonMembership.delete_all()
 Person.delete_all()
 
 Membership.delete_all()
@@ -268,3 +270,16 @@ membership2 = Membership.new({
 
 membership1.save()
 membership2.save()
+
+person_membership1 = PersonMembership.new({
+  'person_id' => person1.id,
+  'membership_id' => membership1.id
+})
+
+person_membership2 = PersonMembership.new({
+  'person_id' => person3.id,
+  'membership_id' => membership2.id
+})
+
+person_membership1.save()
+person_membership2.save()

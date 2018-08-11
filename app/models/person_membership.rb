@@ -43,7 +43,7 @@ class PersonMembership
           ($1, $2)
           RETURNING id"
     values = [@person_id, @membership_id]
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 

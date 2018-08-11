@@ -41,7 +41,7 @@ class ClassName
           ()
           RETURNING id"
     values = []
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 
