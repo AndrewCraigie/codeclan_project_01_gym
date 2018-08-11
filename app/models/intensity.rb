@@ -14,18 +14,18 @@ class Intensity
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM intensities"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM intensities"
     results = SqlRunner.run(sql)
     return results.map { |intensity| Intensity.new(intensity)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM intensities
           WHERE id = $1"
     value = [id]
@@ -41,8 +41,8 @@ class Intensity
           VALUES
           ($1)
           RETURNING id"
-    values = [@name]
-    result = SqlRunner.run(sql).first()
+    value = [@name]
+    result = SqlRunner.run(sql, value).first()
     @id = result['id'].to_i()
     return @id
   end

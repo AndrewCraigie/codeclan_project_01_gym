@@ -1,4 +1,4 @@
-require ('person')
+require_relative ('person')
 require_relative( '../db/sql_runner' )
 
 
@@ -16,18 +16,18 @@ class Payment
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM payments"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM payments"
     results = SqlRunner.run(sql)
     return results.map { |payment| Payment.new(payment)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM payments
           WHERE id = $1"
     value = [id]
@@ -44,7 +44,7 @@ class Payment
           ($1, $2, $3)
           RETURNING id"
     values = [@description, @amount, @person_id]
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 

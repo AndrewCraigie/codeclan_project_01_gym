@@ -24,18 +24,18 @@ class Person
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM persons"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM persons"
     results = SqlRunner.run(sql)
     return results.map { |person| Person.new(person)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM persons
           WHERE id = $1"
     value = [id]
@@ -74,7 +74,7 @@ class Person
       @photo_url,
       @role_id
     ]
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 

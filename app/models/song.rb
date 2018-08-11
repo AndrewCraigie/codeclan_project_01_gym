@@ -16,18 +16,18 @@ class Song
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM songs"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM songs"
     results = SqlRunner.run(sql)
     return results.map { |song| Song.new(song)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM songs
           WHERE id = $1"
     value = [id]
@@ -44,7 +44,7 @@ class Song
           ($1, $2, $3)
           RETURNING id"
     values = [@name, @artist, @duration]
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 

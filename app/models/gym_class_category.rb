@@ -15,18 +15,18 @@ class GymClassCategory
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM gym_class_categories"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM gym_class_categories"
     results = SqlRunner.run(sql)
     return results.map { |gym_class_category| GymClassCategory.new(gym_class_category)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM gym_class_categories
           WHERE id = $1"
     value = [id]
@@ -43,7 +43,7 @@ class GymClassCategory
           ($1, $2)
           RETURNING id"
     values = [@name, @description]
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 

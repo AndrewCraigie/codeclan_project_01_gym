@@ -1,6 +1,6 @@
-require ('person')
-require ('gym_class')
-require ('room')
+require_relative ('person')
+require_relative ('gym_class')
+require_relative ('room')
 require_relative( '../db/sql_runner' )
 
 
@@ -22,18 +22,18 @@ class Session
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM sessions"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM sessions"
     results = SqlRunner.run(sql)
     return results.map { |session| Session.new(session)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM sessions
           WHERE id = $1"
     value = [id]
@@ -50,7 +50,7 @@ class Session
           ($1, $2, $3, $4, $5, $6, $7)
           RETURNING id"
     values = [@session_date, @start_time, @end_time, @capacity, @gym_class_id, @instructor_id, @room_id]
-    result = SqlRunner.run(sql).first()
+    result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
 

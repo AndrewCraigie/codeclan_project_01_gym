@@ -13,18 +13,18 @@ class ClassName
 
   # --- Class methods
 
-  def delete_all()
+  def self.delete_all()
     sql = "DELETE FROM classname"
     SqlRunner.run(sql)
   end
 
-  def all()
+  def self.all()
     sql = "SELECT * FROM tablename"
     results = SqlRunner.run(sql)
     return results.map { |classname| Classname.new(result)}
   end
 
-  def find_by_id(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM tablename
           WHERE id = $1"
     value = [id]
