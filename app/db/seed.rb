@@ -14,6 +14,8 @@ require_relative ('../models/message')
 require_relative ('../models/payment')
 
 
+Role.delete_all()
+
 role1 = Role.new({
   'name' => 'customer'
   })
@@ -24,5 +26,3 @@ role2 = Role.new({
 
 role1.save()
 role2.save()
-
-p Role.all()

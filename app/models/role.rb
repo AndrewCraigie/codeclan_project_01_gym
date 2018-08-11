@@ -49,9 +49,9 @@ class Role
   def update()
       sql = "UPDATE roles
       SET
-      (name)
+      name
       =
-      ($1)
+      $1
       WHERE id = $2"
       values = [@name, @id]
       SqlRunner.run(sql, values)
