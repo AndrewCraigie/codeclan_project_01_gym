@@ -1,3 +1,4 @@
+require ('pry')
 require ('date')
 require_relative ('../models/role')
 require_relative ('../models/membership_type')
@@ -15,6 +16,8 @@ require_relative ('../models/message')
 require_relative ('../models/payment')
 require_relative ('../models/person_membership')
 require_relative ('../models/gym_classes_category')
+
+Session.delete_all()
 
 GymClassesCategory.delete_all()
 PersonMembership.delete_all()
@@ -355,5 +358,14 @@ payment1 = Payment.new({
 payment1.save()
 
 session1 = Session.new({
-  'session_date' => Date.new()
-  })
+  'start_time' => '2018-8-12 15:30:00',
+  'end_time' => '2018-8-12 16:20:00',
+  'capacity' => '20',
+  'gym_class_id' => gym_class2.id,  # Body Pump
+  'instructor_id' => person2.id,
+  'room_id' => room1.id
+})
+
+session1.save()
+
+p Session.all()

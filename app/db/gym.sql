@@ -112,11 +112,11 @@ CREATE TABLE gym_classes_categories(
 
 CREATE TABLE sessions(
   id SERIAL8 PRIMARY KEY,
-  start_time TIME,
-  end_time TIME,
+  start_time TIMESTAMP,
+  end_time TIMESTAMP,
   capacity INT,
   gym_class_id INT REFERENCES gym_classes(id) ON DELETE CASCADE,
-  intructor_id INT REFERENCES persons(id) ON DELETE CASCADE,
+  instructor_id INT REFERENCES persons(id) ON DELETE CASCADE,
   room_id INT REFERENCES rooms(id) ON DELETE CASCADE
 );
 
