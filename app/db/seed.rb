@@ -16,6 +16,7 @@ require_relative ('../models/message')
 require_relative ('../models/payment')
 require_relative ('../models/person_membership')
 require_relative ('../models/gym_classes_category')
+require_relative ('../models/playlist_song')
 
 PersonSession.delete_all()
 Session.delete_all()
@@ -26,7 +27,7 @@ Person.delete_all()
 Message.delete_all()
 Payment.delete_all()
 GymClass.delete_all()
-
+PlaylistSong.delete_all()
 Membership.delete_all()
 
 Role.delete_all()
@@ -144,11 +145,7 @@ intensity2.save()
 intensity3.save()
 
 
-song1 = Song.new({
-  'name' => 'Raise Your Hands',
-  'artist' => 'Ummet Ozcan',
-  'duration' => '00:04:26'
-  })
+
 
 song1 = Song.new({
 'name' => "Till I Collapse",
@@ -210,6 +207,12 @@ song10 = Song.new({
 'duration' => "00:04:52"
 })
 
+song11 = Song.new({
+  'name' => 'Raise Your Hands',
+  'artist' => 'Ummet Ozcan',
+  'duration' => '00:04:26'
+})
+
 song1.save()
 song2.save()
 song3.save()
@@ -220,6 +223,7 @@ song7.save()
 song8.save()
 song9.save()
 song10.save()
+song11.save()
 
 person1 = Person.new({
   'first_name' => "Helen",
@@ -313,6 +317,117 @@ gym_class2 = GymClass.new({
 
 gym_class1.save()
 gym_class2.save()
+
+playlist_song1 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song1.id
+})
+playlist_song2 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song2.id
+})
+playlist_song3 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song3.id
+})
+playlist_song4 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song4.id
+})
+playlist_song5 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song5.id
+})
+playlist_song6 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song7.id
+})
+playlist_song7 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song7.id
+})
+playlist_song8 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song8.id
+})
+playlist_song9 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song9.id
+})
+playlist_song10 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song10.id
+})
+playlist_song11 = PlaylistSong.new({
+  'gym_class_id' => gym_class1.id,
+  'song_id' => song11.id
+})
+# Playlist 2
+
+playlist_song12 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song2.id
+})
+playlist_song13 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song3.id
+})
+playlist_song14 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song4.id
+})
+playlist_song15 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song5.id
+})
+playlist_song16 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song7.id
+})
+playlist_song17 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song7.id
+})
+playlist_song18 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song8.id
+})
+playlist_song19 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song9.id
+})
+playlist_song20 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song10.id
+})
+playlist_song21 = PlaylistSong.new({
+  'gym_class_id' => gym_class2.id,
+  'song_id' => song11.id
+})
+
+playlist_song1.save()
+playlist_song2.save()
+playlist_song3.save()
+playlist_song4.save()
+playlist_song5.save()
+playlist_song6.save()
+playlist_song7.save()
+playlist_song8.save()
+playlist_song9.save()
+playlist_song10.save()
+playlist_song11.save()
+
+
+playlist_song12.save()
+playlist_song13.save()
+playlist_song14.save()
+playlist_song15.save()
+playlist_song16.save()
+playlist_song17.save()
+playlist_song18.save()
+playlist_song19.save()
+playlist_song20.save()
+playlist_song21.save()
 
 gym_classess_category1 = GymClassesCategory.new({
   'class_id' => gym_class1.id,

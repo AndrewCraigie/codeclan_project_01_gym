@@ -137,5 +137,6 @@ CREATE TABLE songs(
 
 CREATE TABLE playlist_songs(
   id SERIAL8 PRIMARY KEY,
-  class_id INT REFERENCES gym_classes(id) ON DELETE CASCADE
+  gym_class_id INT REFERENCES gym_classes(id) ON DELETE CASCADE,
+  song_id INT REFERENCES songs(id) ON DELETE CASCADE
 );
