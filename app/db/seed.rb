@@ -18,6 +18,7 @@ require_relative ('../models/gym_classes_category')
 GymClassesCategory.delete_all()
 PersonMembership.delete_all()
 Person.delete_all()
+Message.delete_all()
 GymClass.delete_all()
 
 Membership.delete_all()
@@ -331,3 +332,13 @@ gym_classess_category1.save()
 gym_classess_category2.save()
 gym_classess_category3.save()
 gym_classess_category4.save()
+
+
+message1 = Message.new({
+  'message' => "You have been booked in to #{gym_class1.name}",
+  'date_time_added' => Time.now(),
+  'person_id' => person1.id
+})
+
+
+message1.save()
