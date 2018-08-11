@@ -104,7 +104,7 @@ CREATE TABLE gym_classes(
 CREATE TABLE gym_classes_categories(
   id SERIAL8 PRIMARY KEY,
   class_id INT REFERENCES gym_classes(id) ON DELETE CASCADE,
-  class_category_id INT REFERENCES gym_class_categories(id) ON DELETE CASCADE
+  gym_class_category_id INT REFERENCES gym_class_categories(id) ON DELETE CASCADE
 );
 
 

@@ -13,7 +13,9 @@ require_relative ('../models/person')
 require_relative ('../models/message')
 require_relative ('../models/payment')
 require_relative ('../models/person_membership')
+require_relative ('../models/gym_classes_category')
 
+GymClassesCategory.delete_all()
 PersonMembership.delete_all()
 Person.delete_all()
 GymClass.delete_all()
@@ -305,6 +307,27 @@ gym_class2 = GymClass.new({
 gym_class1.save()
 gym_class2.save()
 
+gym_classess_category1 = GymClassesCategory.new({
+  'class_id' => gym_class1.id,
+  'gym_class_category_id' => gym_class_category1.id
+})
 
+gym_classess_category2 = GymClassesCategory.new({
+  'class_id' => gym_class1.id,
+  'gym_class_category_id' => gym_class_category4.id
+})
 
-p GymClass.all()
+gym_classess_category3 = GymClassesCategory.new({
+  'class_id' => gym_class2.id,
+  'gym_class_category_id' => gym_class_category1.id
+})
+
+gym_classess_category4 = GymClassesCategory.new({
+  'class_id' => gym_class2.id,
+  'gym_class_category_id' => gym_class_category6.id
+})
+
+gym_classess_category1.save()
+gym_classess_category2.save()
+gym_classess_category3.save()
+gym_classess_category4.save()
