@@ -13,6 +13,7 @@ require_relative ('../models/person')
 require_relative ('../models/message')
 require_relative ('../models/payment')
 
+Person.delete_all()
 
 Role.delete_all()
 MembershipType.delete_all()
@@ -206,4 +207,45 @@ song8.save()
 song9.save()
 song10.save()
 
-p Song.all()
+person1 = Person.new({
+  'first_name' => "Helen",
+  'last_name' => "Bruce",
+  'street_address' => "123 Brown Street",
+  'city' => "Glasgow",
+  'postcode' => "G42 8PU",
+  'telephone_number' => "0141 424 1234",
+  'mobile_number' => "07743662806",
+  'email_address' => "h.bruce@gmail.com",
+  'photo_url' => "0001.jpg",
+  'role_id' => role1.id
+  })
+
+person2 = Person.new({
+  'first_name' => "Oiver",
+  'last_name' => "Maxwell",
+  'street_address' => "18 Thistle Place",
+  'city' => "Glasgow",
+  'postcode' => "G41 9PD",
+  'telephone_number' => "0141 420 1234",
+  'mobile_number' => "07543677780",
+  'email_address' => "olivermax23@btinternet.com",
+  'photo_url' => "0002.jpg",
+  'role_id' => role2.id
+  })
+
+  person3 = Person.new({
+    'first_name' => "Steven",
+    'last_name' => "Adams",
+    'street_address' => "9 Stewart Crescent",
+    'city' => "Glasgow",
+    'postcode' => "G12 0ES",
+    'telephone_number' => "0141 214 1234",
+    'mobile_number' => "07544677780",
+    'email_address' => "sadams@sadams.co.uk",
+    'photo_url' => "0003.jpg",
+    'role_id' => role1.id
+    })
+
+person1.save()
+person2.save()
+person3.save()
