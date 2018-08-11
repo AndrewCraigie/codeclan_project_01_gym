@@ -23,15 +23,15 @@ class MembershipType
   def self.all()
     sql = "SELECT * FROM membership_types"
     results = SqlRunner.run(sql)
-    return results.map { |classname| MembershipType.new(result)}
+    return results.map { |result| MembershipType.new(result)}
   end
 
   def self.find_by_id(id)
     sql = "SELECT * FROM membership_types
           WHERE id = $1"
     value = [id]
-    result = SqlRunner.run(sql, value).first
-    return MembershipType.new(result)
+    result = SqlRunner.run(sql, value)
+    return MembershipType.new(result.first)
   end
 
   # --- Instance methods
