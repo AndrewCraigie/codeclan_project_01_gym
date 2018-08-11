@@ -1,7 +1,7 @@
 <h1>Roles</h1>
 
 <% @roles.each do |role| %>
-<p><%= role.id %>: <%= role.name %>  <a href="/roles/<%= role.id %>/edit">Edit</a></p>
+<p><%= role.id %>: <%= role.name %></p><a href="/roles/<%= role.id %>/edit">Edit</a>
 <% end %>
 
 <a href='/roles/new'>Add new role</a>
