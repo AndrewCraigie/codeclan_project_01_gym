@@ -17,6 +17,7 @@ require_relative ('../models/payment')
 require_relative ('../models/person_membership')
 require_relative ('../models/gym_classes_category')
 
+PersonSession.delete_all()
 Session.delete_all()
 
 GymClassesCategory.delete_all()
@@ -368,4 +369,11 @@ session1 = Session.new({
 
 session1.save()
 
-p Session.all()
+person_session1 = PersonSession.new({
+  'date_time_added' => Time.now().to_s,
+  'reserve' => 'FALSE',
+  'person_id' => person1.id,
+  'session_id' => session1.id
+})
+
+person_session1.save()

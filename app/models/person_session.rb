@@ -10,8 +10,8 @@ class PersonSession
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @date_time_added = ['date_time_added'] # TODO check input output format TIMESTAMP
-    @reserve = options['reserve'].downcase == 'true'  # Convert to bool TODO check this
+    @date_time_added = DateTime.parse(options['date_time_added'])
+    @reserve = options['reserve'].downcase == 'true' ||  options['reserve'].downcase == 't'
     @person_id = options['person_id'].to_i()
     @session_id = options['session_id'].to_i()
   end
@@ -43,9 +43,9 @@ class PersonSession
     sql = "INSERT INTO persons_sessions
           (date_time_added, reserve, person_id, session_id)
           VALUES
-          ($1, $2, $3)
+          ($1, $2, $3, $4)
           RETURNING id"
-    values = [@date_time_added, @reserve.to_s, @person_id, @session_id]
+    values = [@date_time_added.to_s, @reserve.to_s.upcase, @person_id, @session_id]
     result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
@@ -55,9 +55,9 @@ class PersonSession
       SET
       (date_time_added, reserve, person_id, session_id)
        =
-      ($1, $2, $3)
-      WHERE id = $4"
-      values = [@date_time_added, @reserve.to_s, @person_id, @session_id, @id]
+      ($1, $2, $3, $4)
+      WHERE id = $5"
+      values = [@date_time_added.to_s, @reserve.to_s.upcase, @person_id, @session_id, @id]
       SqlRunner.run(sql, values)
     end
 
