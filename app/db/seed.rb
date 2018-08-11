@@ -19,6 +19,7 @@ MembershipType.delete_all()
 Room.delete_all()
 GymClassCategory.delete_all()
 Intensity.delete_all()
+Song.delete_all()
 
 role1 = Role.new({
   'name' => 'customer'
@@ -126,3 +127,83 @@ intensity3 = Intensity.new({
 intensity1.save()
 intensity2.save()
 intensity3.save()
+
+
+song1 = Song.new({
+  'name' => 'Raise Your Hands',
+  'artist' => 'Ummet Ozcan',
+  'duration' => '00:04:26'
+  })
+
+song1 = Song.new({
+'name' => "Till I Collapse",
+'artist' => "Eminem (ft.Nate Dogg)",
+'duration' => "00:04:57"
+})
+
+song2 = Song.new({
+'name' => "Rockstar",
+'artist' => "Post Malone (ft. 21 Savage)",
+'duration' => "00:03:38"
+})
+
+song3 = Song.new({
+'name' => "Lose Yourself",
+'artist' => "Eminem",
+'duration' => "00:05:26"
+})
+
+song4 = Song.new({
+'name' => "HUMBLE",
+'artist' => "Kendrick Lamar",
+'duration' => "00:02:57"
+})
+
+song5 = Song.new({
+'name' => "More Than You Know",
+'artist' => "Axwell Ingrosso",
+'duration' => "00:03:23"
+})
+
+song6 = Song.new({
+'name' => "Mi Gente",
+'artist' => "J Balvin (ft. Beyonce)",
+'duration' => "00:03:29"
+})
+
+song7 = Song.new({
+'name' => "Havana",
+'artist' => "Camila Cabello",
+'duration' => "00:03:37"
+})
+
+song8 = Song.new({
+'name' => "You Don't Know Me",
+'artist' => "Jax Jones (Radio edit)",
+'duration' => "00:03:33"
+})
+
+song9 = Song.new({
+'name' => "New Rules",
+'artist' => "Dua Lipa (Initial Talk remix)",
+'duration' => "00:03:44"
+})
+
+song10 = Song.new({
+'name' => "POWER",
+'artist' => "Kanye West",
+'duration' => "00:04:52"
+})
+
+song1.save()
+song2.save()
+song3.save()
+song4.save()
+song5.save()
+song6.save()
+song7.save()
+song8.save()
+song9.save()
+song10.save()
+
+p Song.all()
