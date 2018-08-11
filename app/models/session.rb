@@ -11,7 +11,7 @@ class Session
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @session_date = options['session_date']  #  DATE Check input and output format
+    # @session_date = options['session_date']  #  DATE Check input and output format
     @start_time = options['start_time']  # TIME Check input and output format
     @end_time = options['end_time'] # TIME Chekc input and output format
     @capacity = options['capacity'].to_i()

@@ -1,3 +1,4 @@
+require ('date')
 require_relative ('../models/role')
 require_relative ('../models/membership_type')
 require_relative ('../models/room')
@@ -352,3 +353,7 @@ payment1 = Payment.new({
 })
 
 payment1.save()
+
+session1 = Session.new({
+  'session_date' => Date.new()
+  })

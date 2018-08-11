@@ -112,7 +112,6 @@ CREATE TABLE gym_classes_categories(
 
 CREATE TABLE sessions(
   id SERIAL8 PRIMARY KEY,
-  session_date DATE,
   start_time TIME,
   end_time TIME,
   capacity INT,
