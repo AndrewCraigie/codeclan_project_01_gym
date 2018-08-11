@@ -294,8 +294,17 @@ gym_class1 = GymClass.new({
   'intensity_id' => intensity2.id
 })
 
+gym_class2 = GymClass.new({
+  'name' => "Body Pump",
+  'description' => "Using weights and repetitions, Body Pump is designed to sculpt, tone and strengthen.\n
+  If you're feeling out of shape, this class will challenge and change your body for the better.\n
+  This dynamic resistance training class gets all the muscle groups working, building strength and conditioning your body. Squat, lift and curl to music that will lift your spirits as you lift those weights.",
+  'intensity_id' => intensity3.id
+})
+
 gym_class1.save()
-gym_class1.name = 'Meta Fit test'
+gym_class2.save()
+
 
 
 p GymClass.all()
