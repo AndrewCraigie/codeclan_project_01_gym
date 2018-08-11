@@ -16,6 +16,7 @@ require_relative ('../models/person_membership')
 
 PersonMembership.delete_all()
 Person.delete_all()
+GymClass.delete_all()
 
 Membership.delete_all()
 
@@ -283,3 +284,18 @@ person_membership2 = PersonMembership.new({
 
 person_membership1.save()
 person_membership2.save()
+
+
+gym_class1 = GymClass.new({
+  'name' => 'Meta Fit',
+  'description' => "Metafit is a high-intensity workout including a series of body-weight exercises with interval style training, designed to keep your body burning calories long after your training session is complete.\n
+  Designed by a former marine, this is a class you can be sure to push your limits in.\n
+  It’s only thirty minutes long, but you will train hard the entire time. It’s suitable for everyone and you can adjust the exercises to suit your own abilities.",
+  'intensity_id' => intensity2.id
+})
+
+gym_class1.save()
+gym_class1.name = 'Meta Fit test'
+
+
+p GymClass.all()
