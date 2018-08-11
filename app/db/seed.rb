@@ -19,6 +19,7 @@ GymClassesCategory.delete_all()
 PersonMembership.delete_all()
 Person.delete_all()
 Message.delete_all()
+Payment.delete_all()
 GymClass.delete_all()
 
 Membership.delete_all()
@@ -342,3 +343,12 @@ message1 = Message.new({
 
 
 message1.save()
+
+
+payment1 = Payment.new({
+  'description' => "Priority booking supplement for #{gym_class1.name}",
+  'amount' => '2.50',
+  'person_id' => person3.id
+})
+
+payment1.save()

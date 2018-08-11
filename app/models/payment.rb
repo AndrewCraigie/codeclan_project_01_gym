@@ -54,7 +54,7 @@ class Payment
       (description, amount, person_id)
       =
       ($1, $2, $3)
-      WHERE id = $1"
+      WHERE id = $4"
       values = [@description, @amount, @person_id, @id]
       SqlRunner.run(sql, values)
     end
