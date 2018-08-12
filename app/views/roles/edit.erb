@@ -1,5 +1,5 @@
-<h1>Show Role</h1>
-
+<h2>Edit Role</h2>
+<%= erb('roles/roles_nav'.to_sym)  %>
 <form class="role-form" action="/roles/<%= @role.id %>" method="post">
   <label for="role-name"></label>
   <input id="role-name" type="text" name="name" value="<%= @role.name %>">

@@ -1,7 +1,6 @@
-<h1>Roles</h1>
+<h2>All Roles</h2>
+<%= erb('roles/roles_nav'.to_sym)  %>
 
 <% @roles.each do |role| %>
-<p><%= role.id %>: <%= role.name %></p><a href="/roles/<%= role.id %>/edit">Edit</a>
+<p><%= role.id %>: <%= role.name %> <a href="/roles/<%= role.id %>/edit">Edit</a></p>
 <% end %>
-
-<a href='/roles/new'>Add new role</a>

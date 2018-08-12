@@ -1,5 +1,5 @@
 <h2>Role Details</h2>
-
+<%= erb('roles/roles_nav'.to_sym)  %>
 <p><%= @role.id %>: <%= @role.name %></p>
 <p>Are you sure you want to delete this role?</p>
 <input type="button" name="cancel" value="Cancel">
