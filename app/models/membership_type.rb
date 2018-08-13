@@ -34,7 +34,7 @@ class MembershipType
     return MembershipType.new(result.first)
   end
 
-  # Seems to be an issue using ORDER by <variable> in Prepare statements
+  # Seems to be an issue using ORDER by <variable> in Prepare statements!!
   def self.all_ordered(prop, direction)
     sql = "SELECT * FROM membership_types ORDER BY #{prop} #{direction.upcase!}"
     results = SqlRunner.run(sql)
