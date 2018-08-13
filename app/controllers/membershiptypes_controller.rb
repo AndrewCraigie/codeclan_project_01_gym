@@ -6,6 +6,17 @@ require_relative( '../models/membership_type' )
 require_relative('../helpers/helpers')
 also_reload( '../models/*' )
 
+
+get '/membershiptypes/sort/asc/:prop' do
+  @membershiptypes = MembershipType.all_ordered_asc(params[:prop])
+  erb ("membershiptypes/index".to_sym)
+end
+
+get '/membershiptypes/sort/desc/:prop' do
+  @membershiptypes = MembershipType.all_ordered_desc(params[:prop])
+  erb ("membershiptypes/index".to_sym)
+end
+
 # INDEX route
 get '/membershiptypes' do
   @membershiptypes = MembershipType.all()
@@ -48,9 +59,4 @@ post '/membershiptypes' do
   @membershiptype = MembershipType.new(params)
   @membershiptype.save()
   redirect ('/membershiptypes')
-end
-
-get '/membershiptypes/sort/:prop/:direction' do
-  @membershiptypes = MembershipType.all_ordered(params['prop'], params['direction'].upcase)
-  erb ("membershiptypes/index".to_sym)
 end

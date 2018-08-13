@@ -34,12 +34,21 @@ class MembershipType
     return MembershipType.new(result.first)
   end
 
-  def self.all_ordered(prop, direction)
-    sql = "SELECT * FROM membership_types ORDER BY $1 $2"
-    values = [prop, direction]
+  def self.all_ordered_asc(prop)
+    sql = "SELECT * FROM membership_types ORDER BY $1 ASC"
+    values = [prop]
     results = SqlRunner.run(sql, values)
     return results.map { |result| MembershipType.new(result)}
   end
+
+  def self.all_ordered_desc(prop)
+    sql = "SELECT * FROM membership_types ORDER BY $1 DESC"
+    values = [prop]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| MembershipType.new(result)}
+  end
+
+
 
   # --- Instance methods
 
