@@ -149,3 +149,75 @@ section nav a {
   border: 1px solid darkorange;
   border-radius: 3px;
 }
+
+.item-table {
+   border-collapse: collapse;
+   border-bottom: 2px solid darkorange;
+}
+.item-table-labels {
+  background-color:darkorange;
+}
+
+.item-table th {
+  text-align: left;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top:0;
+  padding-bottom: 0.5em;
+  color:white;
+}
+
+.item-table-labels th {
+  padding-top: 0.5em;
+}
+.item-table tbody td {
+  border-bottom: 1px solid lightgray;
+}
+
+.item-table td {
+  text-align: left;
+    padding: 0.5em;
+}
+.item-list-item {
+  height: 2.5em;
+  border-bottom: 1px solid lightgray;
+}
+
+.item-id {
+  width: 2.5em;
+  border-right: 2px solid darkorange;
+}
+.item-id a {
+  border:none;
+  text-decoration: none;
+  font-weight:bold;
+}
+.item-name {
+  font-weight: bold;
+}
+
+.item-edit {
+  border-left: 2px solid darkorange;
+}
+
+.item-table thead a {
+  text-decoration: none;
+  display:inline-block;
+  height: 1.3em;
+  width: 1em;
+  border: 1px solid lightgray;
+  text-align: center;
+  margin:0;
+}
+
+.item-table-sort-row {
+  height: 0.5em;
+}
+
+td.item-description  {
+  padding-right: 4em;
+}
+
+.table-instructions {
+  font-size: 0.8em;
+}

@@ -1,0 +1,27 @@
+<h2>All Membership Types</h2>
+<%= erb('membershiptypes/membershiptypes_nav'.to_sym)  %>
+
+<table class='item-table'>
+<thead>
+  <tr class="item-table-sort-row">
+    <th><a href="/membershiptypes/sort/id/asc" class="item-table-sort">&uarr;</><a href="/membershiptypes/sort/id/desc" class="item-table-sort">&darr;</></th>
+    <th><a href="/membershiptypes/sort/name/asc" class="item-table-sort">&uarr;</><a href="/membershiptypes/sort/name/desc" class="item-table-sort">&darr;</></th>
+    <th><a href="/membershiptypes/sort/description/asc" class="item-table-sort">&uarr;</><a href="/membershiptypes/sort/description/desc" class="item-table-sort">&darr;</></th>
+  </tr>
+<tr class="item-table-labels">
+  <th>ID</th>
+  <th>Name</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<% @membershiptypes.each do |membershiptype| %>
+<tr>
+  <td class="item-id"><a href="/membershiptypes/<%= membershiptype.id %>/edit"><%= membershiptype.id %></a></td>
+  <td class="item-name"><%= membershiptype.name %></td>
+  <td class="item-description"><%= membershiptype.description %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<p class="table-instructions">Click ID number to edit or delete<p>

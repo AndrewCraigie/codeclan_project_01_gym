@@ -1,0 +1,7 @@
+<h2>Add Membership Type</h2>
+<%= erb('membershiptypes/membershiptypes_nav'.to_sym)  %>
+<form class="membershiptype-new" action="/membershiptypes" method="post">
+  <label for="membershiptype-name"></label>
+  <input id="membershiptype-name" type="text" name="name">
+  <input type="submit" name="submit" value="Add New Membership Type">
+</form>

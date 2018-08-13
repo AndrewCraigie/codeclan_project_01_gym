@@ -1,4 +1,4 @@
-
+require ('pry')
 require_relative( '../db/sql_runner' )
 
 
@@ -32,6 +32,13 @@ class MembershipType
     value = [id]
     result = SqlRunner.run(sql, value)
     return MembershipType.new(result.first)
+  end
+
+  def self.all_ordered(prop, direction)
+    sql = "SELECT * FROM membership_types ORDER BY $1 $2"
+    values = [prop, direction]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| MembershipType.new(result)}
   end
 
   # --- Instance methods
