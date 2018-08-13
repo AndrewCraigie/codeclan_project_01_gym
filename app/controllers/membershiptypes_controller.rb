@@ -7,13 +7,8 @@ require_relative('../helpers/helpers')
 also_reload( '../models/*' )
 
 
-get '/membershiptypes/sort/asc/:prop' do
-  @membershiptypes = MembershipType.all_ordered_asc(params[:prop])
-  erb ("membershiptypes/index".to_sym)
-end
-
-get '/membershiptypes/sort/desc/:prop' do
-  @membershiptypes = MembershipType.all_ordered_desc(params[:prop])
+get '/membershiptypes/sort/:direction/:prop' do
+  @membershiptypes = MembershipType.all_ordered(params[:prop], params[:direction])
   erb ("membershiptypes/index".to_sym)
 end
 
