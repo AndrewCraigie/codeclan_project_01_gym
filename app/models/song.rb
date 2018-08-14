@@ -35,6 +35,17 @@ class Song
     return Song.new(result)
   end
 
+  def self.all_ordered(prop, direction)
+    valid = ['id', 'name', 'artist', 'duration']
+    if valid.include?(prop)
+      sql = "SELECT * FROM songs ORDER BY #{prop} #{direction.upcase!}"
+    else
+      sql = "SELECT * FROM songs"
+    end
+    results = SqlRunner.run(sql)
+    return results.map { |result| Song.new(result)}
+  end
+
   # --- Instance methods
 
   def save()

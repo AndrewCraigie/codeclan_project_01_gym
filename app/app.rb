@@ -7,6 +7,8 @@ require_relative('controllers/membershiptypes_controller')
 require_relative('controllers/rooms_controller')
 require_relative('controllers/intensities_controller')
 require_relative('controllers/gym_class_categories_controller')
+require_relative('controllers/gym_class_categories_controller')
+require_relative('controllers/songs_controller')
 also_reload( '../models/*' )
 
 

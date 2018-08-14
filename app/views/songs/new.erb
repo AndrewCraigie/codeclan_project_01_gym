@@ -1,0 +1,19 @@
+<h2>Add Song</h2>
+<%= erb('songs/songs_nav'.to_sym)  %>
+
+
+<form class="edit-item-form" action="/songs" method="post">
+
+  <label for="song-name">Name</label>
+  <input id="song-name" type="text" name="name" required>
+
+  <label for="song-artist">Name</label>
+  <input id="song-artist" type="text" name="artist" required>
+
+  <label for="song-duration">Name</label>
+  <input id="song-duration" type="text" name="duration" required>
+
+  <div id="form-btns">
+    <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add Song">
+  </div>
+</form>

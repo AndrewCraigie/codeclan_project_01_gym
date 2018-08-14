@@ -1,0 +1,20 @@
+<h2>Edit Song</h2>
+<%= erb('songs/songs_nav'.to_sym)  %>
+
+<form class="edit-item-form" action="/songs/<%= @song.id %>" method="post">
+
+  <label for="song-name">Name</label>
+  <input id="song-name" type="text" name="name" value="<%= @song.name %>" required>
+
+  <label for="song-artist">Name</label>
+  <input id="song-artist" type="text" name="artist" value="<%= @song.artist %>" required>
+
+  <label for="song-duration">Name</label>
+  <input id="song-duration" type="text" name="duration" value="<%= @song.duration %>" required>
+
+  <div id="form-btns">
+  <input class="form-btn delete" type="submit" name="delete" value="⚠️ DELETE Song " formaction="/songs/<%= @song.id %>/delete">
+
+  <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Update Song">
+</div>
+</form>

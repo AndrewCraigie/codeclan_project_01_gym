@@ -1,0 +1,31 @@
+<h2>All Songs</h2>
+<%= erb('songs/songs_nav'.to_sym)  %>
+
+<table class='item-table'>
+<thead>
+  <tr class="item-table-sort-row">
+    <th><a href="/songs/sort/asc/id" class="item-table-sort">&uarr;</><a href="/songs/sort/desc/id" class="item-table-sort">&darr;</></th>
+    <th><a href="/songs/sort/asc/name" class="item-table-sort">&uarr;</><a href="/songs/sort/desc/name" class="item-table-sort">&darr;</></th>
+
+      <th><a href="/songs/sort/asc/artist" class="item-table-sort">&uarr;</><a href="/songs/sort/desc/artist" class="item-table-sort">&darr;</></th>
+        <th><a href="/songs/sort/asc/duration" class="item-table-sort">&uarr;</><a href="/songs/sort/desc/duration" class="item-table-sort">&darr;</></th>
+  </tr>
+<tr class="item-table-labels">
+  <th>ID</th>
+  <th>Name</th>
+  <th>Artist</th>
+  <th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<% @songs.each do |song| %>
+<tr>
+  <td class="item-id"><a href="/songs/<%= song.id %>/edit"><%= song.id %></a></td>
+  <td class="item-name"><%= song.name %></td>
+  <td class="item-artist"><%= song.artist %></td>
+  <td class="item-duration"><%= song.duration %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<p class="table-instructions">Click ID number to edit or delete<p>
