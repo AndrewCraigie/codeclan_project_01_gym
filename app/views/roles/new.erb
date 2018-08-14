@@ -1,7 +1,13 @@
 <h2>Add Role</h2>
 <%= erb('roles/roles_nav'.to_sym)  %>
-<form class="role-new" action="/roles" method="post">
-  <label for="role-name"></label>
-  <input id="role-name" type="text" name="name">
-  <input type="submit" name="submit" value="Add New Role">
+
+
+<form class="edit-item-form" action="/roles" method="post">
+
+  <label for="role-name">Name</label>
+  <input id="role-name" type="text" name="name" required>
+
+  <div id="form-btns">
+    <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add Role">
+  </div>
 </form>
