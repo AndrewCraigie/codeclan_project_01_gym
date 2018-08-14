@@ -442,6 +442,50 @@ td.item-description  {
 #session-person {
   width: 40%;
   min-height: 200px;
-  background-color: lightblue;
+
   float: right;
+  font-size: 1em;
+}
+
+.date-label {
+  width: 40px;
+  font-weight: bold;
+}
+
+.membership-label {
+  width: 80px;
+  font-weight: bold;
+}
+
+#person-name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.find-person {
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  background-color: darkgray;
+}
+.find-person input[type=submit]{
+  width: 50px;
+  height: 40px;
+
+}
+
+.session-person-form {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+}
+
+.session-person-form input[type=submit] {
+  display:block;
+  width: 50%;
+  height: 50px;
+  font-size: 1.3em !important;
 }

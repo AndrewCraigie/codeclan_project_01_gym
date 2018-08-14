@@ -39,6 +39,7 @@
   </div>
 
   <div id="session-person">
+    <h3>Find a Member</h3>
 
     <p id="session-person-message"><%= @message %></p>
 
@@ -46,7 +47,16 @@
       <input type="text" name="person_id_find">
       <input type="submit" name="submit" value="Find">
     </form>
+
     <% if @person != nil %>
+    <form class="session-person-form" action="/sessions/show/<%= @session.id %>/<%= @gym_class.id %>/<%= @person.id %>" method="post">
+      <img id="found-person-img" src="/member_images/<%= @person.photo_url %>" >
+      <p id="person-name"><%= @person.pretty_name %></p>
+      <p id="membership-start-date"><span class="date-label">Start:</span> <%= @person.membership.pretty_start_date%></p>
+      <p id="membership-end-date"><span class="date-label">End:</span> <%= @person.membership.pretty_end_date%></p>
+      <p id="membership-membership-type"><span class="membership-label">Membership Type: </span><%= @person.membership.type.name.upcase %></p>
+      <input type="submit" name="submit" value="Book Member in Session">
+    </form>
 
     <% else %>
       <!-- <p>No Member with that ID can be found</p>

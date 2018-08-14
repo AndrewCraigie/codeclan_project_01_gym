@@ -85,5 +85,21 @@ class Membership
     SqlRunner.run(sql, value)
   end
 
+  def type()
+    sql = "SELECT * FROM membership_types
+          WHERE id = $1"
+    value = [@membership_type_id]
+    result = SqlRunner.run(sql, value)
+    return MembershipType.new(result.first)
+  end
+
+  def pretty_start_date()
+    return @start_date.strftime("%A, %e, $B, %Y")
+  end
+
+  def pretty_end_date()
+    return @end_date.strftime("%A, %e, $B, %Y")
+  end
+
 
 end

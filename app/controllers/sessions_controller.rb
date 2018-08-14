@@ -39,7 +39,7 @@ get '/sessions/show/:id/:class_id/:person_id' do
 
   @message = ""
 
-  if params['person_id_find'] != nil
+  if params['person_id_find'] != nil && params['person_id_find'] != ""
     @person = Person.find_by_id(params['person_id_find'])
     if @person != nil
       @message = "Member Found"
@@ -55,6 +55,21 @@ get '/sessions/show/:id/:class_id/:person_id' do
   @gym_class = GymClass.find_by_id(params[:class_id])
   @session = Session.find_by_id(params[:id])
   erb('sessions/show'.to_sym)
+end
+
+post '/sessions/show/:id/:class_id/:person_id' do
+
+  @session = Session.find_by_id(params['id'])
+  @gym_class = GymClass.find_by_id(params['class_id'])
+  @person = Person.find_by_id(params['person_id'])
+
+  reserve = !@session.spaces_available()
+
+  @booking = Booking.new(@person, @session, DateTime.now().to_s, reserve.to_s)
+  @booking.save()
+
+  erb('sessions/show'.to_sym)
+
 end
 
 

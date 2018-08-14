@@ -130,7 +130,7 @@ class Session
       person = Person.new(result)
       date_time_added = result['date_time_added']
       reserve = result['reserve']
-      bookings << Booking.new(person, date_time_added, reserve)
+      bookings << Booking.new(person, self, date_time_added, reserve)
     end
 
     return bookings
@@ -151,10 +151,27 @@ class Session
       person = Person.new(result)
       date_time_added = result['date_time_added']
       reserve = result['reserve']
-      reserves << Booking.new(person, date_time_added, reserve)
+      reserves << Booking.new(person, self, date_time_added, reserve)
     end
 
     return reserves
+  end
+
+  def spaces_available()
+    sql = "SELECT COUNT(session_id)
+          FROM persons_sessions
+          WHERE session_id = $1"
+    value = [@id]
+    result = SqlRunner.run(sql, value).first
+
+    if result['count'].to_i < @capacity
+      puts "result: #{result['count'].to_i} #{@capacity} true"
+      return true
+    else
+      puts "result: #{result['count'].to_i} #{@capacity} false"
+      return false
+    end
+
   end
 
 
