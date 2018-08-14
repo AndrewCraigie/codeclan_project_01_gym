@@ -36,6 +36,7 @@ get '/gym_classes/:id/edit' do
   erb ("gym_classes/edit".to_sym)
 end
 
+
 # SHOW route
 get '/gym_classes/:id' do
   @gym_class = GymClass.find_by_id(params[:id])

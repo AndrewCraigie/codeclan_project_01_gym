@@ -34,7 +34,8 @@ get '/sessions/:id/edit' do
 end
 
 # SHOW route
-get '/sessions/:id' do
+get '/sessions/show/:id/:class_id' do
+  @gym_class = GymClass.find_by_id(params[:class_id])
   @session = Session.find_by_id(params[:id])
   erb('sessions/show'.to_sym)
 end

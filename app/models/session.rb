@@ -91,5 +91,28 @@ class Session
     SqlRunner.run(sql, value)
   end
 
+  def date()
+    return @start_time.strftime("%F")
+  end
+
+  def start()
+    return @start_time.strftime("%H:%M")
+  end
+
+  def duration
+    duration_seconds = ((@end_time - @start_time) * 24 * 3600).to_i
+    duration_hours = duration_seconds / 3600
+    duration_mins = (duration_seconds % 3600) / 60
+    return "#{duration_hours}:#{duration_mins}"
+  end
+
+  def gym_class_name()
+    sql = "SELECT name FROM gym_classes
+          WHERE id = $1"
+    value = [@gym_class_id]
+    result = SqlRunner.run(sql, value).first
+    return result['name']
+  end
+
 
 end

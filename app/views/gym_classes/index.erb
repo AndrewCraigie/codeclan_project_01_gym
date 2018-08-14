@@ -21,7 +21,7 @@
 <tbody>
 <% @gym_classes.each do |gym_class| %>
 <tr>
-  <td class="item-id"><a href="/gym_classes/<%= gym_class.id %>/edit"><%= gym_class.id %></a></td>
+  <td class="item-id"><a href="/gym_classes/show/<%= gym_class.id %>/edit"><%= gym_class.id %></a></td>
   <td class="item-name"><%= gym_class.name %></td>
 
   <td class="item-gym-class-description-cell">

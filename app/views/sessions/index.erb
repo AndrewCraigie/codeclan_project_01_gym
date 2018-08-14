@@ -11,7 +11,10 @@
 
     <th><a href="/sessions/sort/asc/start_time" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/start_time" class="item-table-sort">&darr;</></th>
 
-    <th><a href="/sessions/sort/asc/end_time" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/end_time" class="item-table-sort">&darr;</></th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+
+
 
     <th><a href="/sessions/sort/asc/capacity" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/capacity" class="item-table-sort">&darr;</></th>
 
@@ -26,8 +29,10 @@
 <tr class="item-table-labels">
   <th>ID</th>
   <th>Class</th>
+  <th>Date</th>
   <th>Start</th>
-  <th>End</th>
+  <th>Duration</th>
+
   <th>Capacity</th>
   <th>Instructor</th>
   <th>Room</th>
@@ -38,10 +43,11 @@
 <tr>
   <td class="item-id"><a href="/sessions/<%= session.id %>/edit"><%= session.id %></a></td>
 
-  <td class="item-class-id"><%= session.gym_class_id %></td>
+  <td class="item-class-id"><a id="session-<%= session.id %>" href="/sessions/show/<%= session.id %>/<%= session.gym_class_id %>"><%= session.gym_class_name %></a></td>
+  <td class="item-list-date"><%= session.date %></td>
+  <td class="item-start-time"><%= session.start %></td>
+  <td class='item-duration'><%= session.duration %></td>
 
-  <td class="item-start-time"><%= session.start_time %></td>
-  <td class="item-start-time"><%= session.end_time %></td>
   <td class="item-start-time"><%= session.capacity %></td>
   <td class="item-start-time"><%= session.instructor_id %></td>
   <td class="item-start-time"><%= session.room_id%></td>
