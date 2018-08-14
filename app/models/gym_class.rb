@@ -35,6 +35,17 @@ class GymClass
     return GymClass.new(result)
   end
 
+  def self.all_ordered(prop, direction)
+    valid = ['id', 'name', 'description', 'intensity_id']
+    if valid.include?(prop)
+      sql = "SELECT * FROM gym_classes ORDER BY #{prop} #{direction.upcase!}"
+    else
+      sql = "SELECT * FROM gym_classes"
+    end
+    results = SqlRunner.run(sql)
+    return results.map { |result| GymClass.new(result)}
+  end
+
   # --- Instance methods
 
   def save()

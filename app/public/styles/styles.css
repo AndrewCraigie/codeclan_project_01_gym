@@ -330,3 +330,31 @@ td.item-description  {
   font-size: 1.2em;
   padding: 0.2em;
 }
+
+#gym-class-description {
+  height: 200px;
+  width: 95%;
+  overflow: scroll;
+  font-size: 1.2em;
+}
+.item-gym-class-description {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.item-gym-class-description-cell{
+  padding:0;
+  width: 500px;
+  height: 200px;
+
+}
+.item-gym-class-description-cell textarea {
+  font-size: 1.2em;
+}
+
+.gym-class-intensity-select {
+  margin-top: 1em;
+  width: 50%;
+  height: 1.6em;
+  font-size: 1.2em;
+}
