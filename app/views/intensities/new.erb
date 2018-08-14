@@ -1,0 +1,13 @@
+<h2>Add Intensity</h2>
+<%= erb('intensities/intensities_nav'.to_sym)  %>
+
+
+<form class="edit-item-form" action="/intensities" method="post">
+
+  <label for="intensity-name">Name</label>
+  <input id="intensity-name" type="text" name="name" required>
+
+  <div id="form-btns">
+    <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add Intensity">
+  </div>
+</form>

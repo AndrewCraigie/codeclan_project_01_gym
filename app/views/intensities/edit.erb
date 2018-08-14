@@ -1,0 +1,14 @@
+<h2>Edit Intensity</h2>
+<%= erb('intensities/intensities_nav'.to_sym)  %>
+
+<form class="edit-item-form" action="/intensities/<%= @intensity.id %>" method="post">
+
+  <label for="intensity-name">Name</label>
+  <input id="intensity-name" type="text" name="name" value="<%= @intensity.name %>" required>
+
+  <div id="form-btns">
+  <input class="form-btn delete" type="submit" name="delete" value="⚠️ DELETE Intensity " formaction="/intensities/<%= @intensity.id %>/delete">
+
+  <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Update Intensity">
+</div>
+</form>
