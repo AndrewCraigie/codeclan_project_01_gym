@@ -78,5 +78,10 @@ class GymClass
     SqlRunner.run(sql, value)
   end
 
+  def description_paras()
+    return @description.split("\n")
+  end
+
+
 
 end

@@ -4,3 +4,32 @@
   </ul>
 </nav>
 <h2><%= @gym_class.name %> <span class='link-text'>on</span> <%= @session.date %> <span class='link-text'>at</span> <%= @session.start %></h2>
+
+
+
+<div id="session-gym-class">
+  <div id="session-gym-class-description">
+    <% @gym_class.description_paras().each do |para| %>
+    <p class="description-para"><%= para %></p>
+    <% end  %>
+  </div>
+  <div id="session-gym-class-booked">
+    <% @session.booked().each do |booked| %>
+    <div class="person-booked">
+      <img class="person-booked-image" src="/member_images/<%= booked.person.photo_url %>"/>
+      <p><%= booked.person.pretty_name%></p>
+      <p><%= booked.date_time_added %></p>
+    </div>
+    <% end %>
+  </div>
+  <div id="session-gym-class-reserve">
+  <% @session.reserve().each do |reserve| %>
+  <div class="person-reserve">
+    <img class="person-reserve-image" src="/member_images/<%= reserve.person.photo_url %>"/>
+    <p><%= reserve.person.pretty_name%></p>
+    <p><%= reserve.date_time_added %></p>
+  </div>
+  <% end %>
+  </div>
+
+</div>

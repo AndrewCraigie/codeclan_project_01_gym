@@ -138,22 +138,27 @@ class Person
     return result['name']
   end
 
-  # def membership()
-  #   sql = "SELECT memberships.*
-  #   FROM memberships
-  #   INNER JOIN persons_memberships
-  #   ON memberships.id = persons_memberships.membership_id
-  #   INNER JOIN persons
-  #   ON persons_memberships.person_id = persons.id
-  #   WHERE persons.id = $1"
-  #   value = [@id]
-  #   result = SqlRunner.run(sql,value)first
-  #   if result.empty?
-  #     return "none"
-  #   else
-  #     return Membership.new(result)
-  #   end
-  # end
+  def membership()
+    sql = "SELECT memberships.*
+    FROM memberships
+    INNER JOIN persons_memberships
+    ON memberships.id = persons_memberships.membership_id
+    INNER JOIN persons
+    ON persons_memberships.person_id = persons.id
+    WHERE persons.id = $1"
+    value = [@id]
+    result = SqlRunner.run(sql,value).first
+    if result.empty?
+      return "none"
+    else
+      return Membership.new(result)
+    end
+
+  end
+
+  def pretty_name()
+    return "#{@first_name.capitalize} #{@last_name.capitalize}"
+  end
 
   # def membership_id()
   #   sql = "SELECT * FROM persons_memberships

@@ -2,6 +2,7 @@ require ('date')
 require_relative ('person')
 require_relative ('gym_class')
 require_relative ('room')
+require_relative ('booking')
 require_relative( '../db/sql_runner' )
 
 
@@ -112,6 +113,48 @@ class Session
     value = [@gym_class_id]
     result = SqlRunner.run(sql, value).first
     return result['name']
+  end
+
+  def booked()
+    sql = "SELECT persons.*, persons_sessions.date_time_added, persons_sessions.reserve
+    FROM sessions
+    INNER JOIN persons_sessions
+    ON sessions.id = persons_sessions.session_id
+    INNER JOIN persons
+    ON persons_sessions.person_id = persons.id
+    WHERE persons_sessions.reserve = FALSE"
+    results = SqlRunner.run(sql)
+    bookings = []
+
+    results.each do |result|
+      person = Person.new(result)
+      date_time_added = result['date_time_added']
+      reserve = result['reserve']
+      bookings << Booking.new(person, date_time_added, reserve)
+    end
+
+    return bookings
+  end
+
+  def reserve()
+    sql = "SELECT persons.*, persons_sessions.date_time_added, persons_sessions.reserve
+    FROM sessions
+    INNER JOIN persons_sessions
+    ON sessions.id = persons_sessions.session_id
+    INNER JOIN persons
+    ON persons_sessions.person_id = persons.id
+    WHERE persons_sessions.reserve = TRUE"
+    results = SqlRunner.run(sql)
+    reserves = []
+
+    results.each do |result|
+      person = Person.new(result)
+      date_time_added = result['date_time_added']
+      reserve = result['reserve']
+      reserves << Booking.new(person, date_time_added, reserve)
+    end
+
+    return reserves
   end
 
 

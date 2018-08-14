@@ -362,3 +362,23 @@ td.item-description  {
 .link-text {
   color: darkorange;
 }
+
+#session-gym-class {
+  position:relative;
+  width: 100%;
+  background-color: lightblue;
+
+}
+
+#session-gym-class-description {
+  width: 50%;
+  background-color:pink;
+}
+
+#session-gym-class-booked {
+  width: 50%;
+}
+
+#session-gym-class-reserve {
+  width: 50%;
+}
