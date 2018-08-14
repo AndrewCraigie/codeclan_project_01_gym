@@ -9,6 +9,13 @@ body {
   width: 100%;
   background-color:white;
 }
+#wrapper-clear{
+  width: 100%;
+  height: 10px;
+  margin-bottom: 10px;
+  clear: both;
+  background-color: white;
+}
 #nav {
   position: relative;
   width: 100%;
@@ -107,10 +114,17 @@ section {
   padding-top: 1em;
   padding-left: 15em;
   padding-right: 40px;
-  padding-bottom: 60px;
+  margin-bottom: 10px;
+  padding-bottom: 80px;
+  margin-bottom:0;
+
 }
 
 footer {
+  padding:0;
+  margin:0;
+  display:block;
+  clear:both;
   width: 100%;
   height: 100px;
   background-color:darkgray;
@@ -366,17 +380,22 @@ td.item-description  {
 #session-gym-class {
   position:relative;
   width: 100%;
+  background-color: tomato;
 
+}
+#session-class-group {
+  position: relative;
+  width: 48%;
+  float: left;
 
 }
 
 #session-gym-class-description {
-  width: 50%;
-
+  width: 100%;
 }
 
 #session-gym-class-booked {
-  width: 50%;
+  width: 100%;
   padding-bottom: 10px;
   border: 1px solid darkgray;
   border-radius: 5px;
@@ -384,7 +403,7 @@ td.item-description  {
 }
 
 #session-gym-class-reserve {
-  width: 50%;
+  width: 100%;
   min-height: 100px;
   padding-bottom: 10px;
   border: 1px solid darkgray;
@@ -418,4 +437,11 @@ td.item-description  {
 .person-booked-image, .person-reserve-image {
   display:block;
   width: 80px;
+}
+
+#session-person {
+  width: 40%;
+  min-height: 200px;
+  background-color: lightblue;
+  float: right;
 }
