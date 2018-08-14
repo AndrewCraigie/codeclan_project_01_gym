@@ -42,6 +42,18 @@
       <option value="<%= role.id %>"><%= role.name %></option>
     <%  end  %>
   </select>
+
+  <fieldset id="membership-group">
+    <legend>Membership Details</legend>
+    <select class="membershiptype-select" name="membeership_type_id">
+      <% @membership_types.each do |membership_type| %>
+      <option value="<%= membership_type.id %>"><%= membership_type.name %></option>
+      <% end %>
+    </select>
+  </fieldset>
+
+  
+
   <div class="submit-group">
     <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add New Member">
   </div>

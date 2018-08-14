@@ -18,7 +18,7 @@ class Person
     @telephone_number = options['telephone_number']
     @mobile_number = options['mobile_number']
     @email_address = options['email_address']
-    @photo_url = options['photo_url']
+    @photo_url = options['photo_url'] == "" ? 'blank.jpg' : options['photo_url']
     @role_id = options['role_id'].to_i()
   end
 

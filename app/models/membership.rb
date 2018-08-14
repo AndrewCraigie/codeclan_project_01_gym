@@ -1,4 +1,6 @@
 require_relative ('membership_type')
+require_relative('membership')
+require_relative('person_membership')
 require_relative( '../db/sql_runner' )
 
 
@@ -10,8 +12,8 @@ class Membership
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @membership_number = options['membership_number'].to_i()
-    @start_date = options['start_date'] # TODO check input output format
-    @end_date = options['end_date'] # TODO check input output format
+    @start_date = DateTime.parse(options['start_date']) # TODO check input output format
+    @end_date = DateTime.parse(options['end_date']) # TODO check input output format
     @membership_type_id = options['membership_type_id'].to_i()
   end
 
@@ -36,6 +38,22 @@ class Membership
     return Membership.new(result)
   end
 
+  def self.new_for_member(person_id, membership_type_id)
+    options = {
+      'start_date' => DateTime.now().to_s,
+      'end_date' => DateTime.now().next_year(1).to_s,
+      'membership_number' => person_id.to_s.rjust(4, '0'),
+      'membership_type_id' => membership_type_id
+    }
+    membership = Membership.new(options)
+    membership.save()
+    person_membership = PersonMembership.new({
+      'person_id' => person_id,
+      'membership_id' => membership.id
+      })
+    person_membership.save()
+  end
+
   # --- Instance methods
 
   def save()
@@ -44,7 +62,7 @@ class Membership
           VALUES
           ($1, $2, $3, $4)
           RETURNING id"
-    values = [@membership_number, @start_date, @end_date, @membership_type_id]
+    values = [@membership_number, @start_date.to_s, @end_date.to_s, @membership_type_id]
     result = SqlRunner.run(sql, values).first()
     @id = result['id'].to_i()
   end
@@ -56,7 +74,7 @@ class Membership
        =
       ($1, $2, $3, $4)
       WHERE id = $5"
-      values = [@membership_number, @start_date, @end_date, @membership_type_id, @id]
+      values = [@membership_number, @start_date.to_s, @end_date.to_s, @membership_type_id, @id]
       SqlRunner.run(sql, values)
     end
 

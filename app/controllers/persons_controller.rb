@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry')
 require_relative( '../models/person' )
 require_relative( '../models/role' )
+require_relative( '../models/membership' )
 also_reload( '../models/*' )
 
 get '/persons/sort/:direction/:prop' do
@@ -18,6 +19,7 @@ end
 
 get '/persons/new' do
   @roles = Role.all()
+  @membership_types = MembershipType.all()
   erb('persons/new'.to_sym)
 end
 
@@ -54,5 +56,6 @@ end
 post '/persons' do
   @person = Person.new(params)
   @person.save()
+  Membership.new_for_member(@person.id, params['membeership_type_id'])
   redirect ('/persons')
 end
