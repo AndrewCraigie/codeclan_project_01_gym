@@ -1,0 +1,14 @@
+<h2>Edit Room</h2>
+<%= erb('rooms/rooms_nav'.to_sym)  %>
+
+<form class="edit-item-form" action="/rooms/<%= @room.id %>" method="post">
+
+  <label for="room-name">Name</label>
+  <input id="room-name" type="text" name="name" value="<%= @room.name %>" required>
+
+  <div id="form-btns">
+  <input class="form-btn delete" type="submit" name="delete" value="⚠️ DELETE Room " formaction="/rooms/<%= @room.id %>/delete">
+
+  <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Update Room">
+</div>
+</form>
