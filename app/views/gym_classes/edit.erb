@@ -9,9 +9,6 @@
   <label for="gym-class-description">Description</label>
   <textarea  id="gym-class-description" name="description"><%= @gym_class.description %></textarea>
 
-  <!-- <label for="gym-class-intensity">Intensity Level</label>
-  <input id="gym-class-intensity" type="text" name="intensity_id" value="<%= @gym_class.intensity_id %>" required> -->
-
   <select class="gym-class-intensity-select" name="intensity_id">
     <% @intensities.each do |intensity| %>
     <% if @gym_class.intensity_id == intensity.id %>
