@@ -41,7 +41,11 @@ class Person
           WHERE id = $1"
     value = [id]
     result = SqlRunner.run(sql, value).first
-    return Person.new(result)
+    if result != nil
+      return Person.new(result)
+    else
+      return nil
+    end
   end
 
   def self.all_ordered(prop, direction)

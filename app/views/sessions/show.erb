@@ -40,6 +40,21 @@
 
   <div id="session-person">
 
+    <p id="session-person-message"><%= @message %></p>
+
+    <form class="find-person" action="/sessions/show/<%= @session.id %>/<%= @gym_class.id %>/person_id" method="get">
+      <input type="text" name="person_id_find">
+      <input type="submit" name="submit" value="Find">
+    </form>
+    <% if @person != nil %>
+
+    <% else %>
+      <!-- <p>No Member with that ID can be found</p>
+      <p>Please enter a valid Member ID</p> -->
+    <% end %>
+
   </div>
+
+
 
 </div>

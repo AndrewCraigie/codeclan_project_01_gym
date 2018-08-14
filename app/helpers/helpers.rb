@@ -4,10 +4,10 @@ require ('pry')
 helpers do
 
 
-  def items_list_divs(options)
-
-
-
+  def number_or_nil(string)
+    Integer(string || '')
+  rescue ArgumentError
+    nil
   end
 
 

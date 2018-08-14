@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require( 'pry')
+require_relative( '../models/person' )
 require_relative( '../models/session' )
 require_relative( '../models/person_session' )
 also_reload( '../models/*' )
@@ -34,7 +35,23 @@ get '/sessions/:id/edit' do
 end
 
 # SHOW route
-get '/sessions/show/:id/:class_id' do
+get '/sessions/show/:id/:class_id/:person_id' do
+
+  @message = ""
+
+  if params['person_id_find'] != nil
+    @person = Person.find_by_id(params['person_id_find'])
+    if @person != nil
+      @message = "Member Found"
+    else
+      @message  = "No member with that ID can be found\n
+                  Please enter a valid Member ID"
+    end
+  else
+    @person = nil
+    @message = "Enter a valid Member ID"
+  end
+
   @gym_class = GymClass.find_by_id(params[:class_id])
   @session = Session.find_by_id(params[:id])
   erb('sessions/show'.to_sym)
