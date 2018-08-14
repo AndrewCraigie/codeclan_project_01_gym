@@ -1,0 +1,52 @@
+<h2>All Sessions</h2>
+<%= erb('sessions/sessions_nav'.to_sym)  %>
+
+<table class='item-table'>
+<thead>
+  <tr class="item-table-sort-row">
+    <th><a href="/sessions/sort/asc/id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/id" class="item-table-sort">&darr;</></th>
+
+
+    <th><a href="/sessions/sort/asc/gym_class_id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/gym_class_id" class="item-table-sort">&darr;</></th>
+
+    <th><a href="/sessions/sort/asc/start_time" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/start_time" class="item-table-sort">&darr;</></th>
+
+    <th><a href="/sessions/sort/asc/end_time" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/end_time" class="item-table-sort">&darr;</></th>
+
+    <th><a href="/sessions/sort/asc/capacity" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/capacity" class="item-table-sort">&darr;</></th>
+
+
+
+    <th><a href="/sessions/sort/asc/instructor_id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/instructor_id" class="item-table-sort">&darr;</></th>
+
+    <th><a href="/sessions/sort/asc/room_id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/room_id" class="item-table-sort">&darr;</></th>
+
+
+  </tr>
+<tr class="item-table-labels">
+  <th>ID</th>
+  <th>Class</th>
+  <th>Start</th>
+  <th>End</th>
+  <th>Capacity</th>
+  <th>Instructor</th>
+  <th>Room</th>
+</tr>
+</thead>
+<tbody>
+<% @sessions.each do |session| %>
+<tr>
+  <td class="item-id"><a href="/sessions/<%= session.id %>/edit"><%= session.id %></a></td>
+
+  <td class="item-class-id"><%= session.gym_class_id %></td>
+
+  <td class="item-start-time"><%= session.start_time %></td>
+  <td class="item-start-time"><%= session.end_time %></td>
+  <td class="item-start-time"><%= session.capacity %></td>
+  <td class="item-start-time"><%= session.instructor_id %></td>
+  <td class="item-start-time"><%= session.room_id%></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<p class="table-instructions">Click ID number to edit or delete<p>

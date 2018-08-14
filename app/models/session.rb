@@ -42,6 +42,18 @@ class Session
     return Session.new(result)
   end
 
+  def self.all_ordered(prop, direction)
+    valid = ['id', 'start_time', 'end_time', 'capacity', 'gym_class_id',
+              'instructor_id', 'room_id']
+    if valid.include?(prop)
+      sql = "SELECT * FROM sessions ORDER BY #{prop} #{direction.upcase!}"
+    else
+      sql = "SELECT * FROM sessions"
+    end
+    results = SqlRunner.run(sql)
+    return results.map { |result| Session.new(result)}
+  end
+
   # --- Instance methods
 
   def save()
