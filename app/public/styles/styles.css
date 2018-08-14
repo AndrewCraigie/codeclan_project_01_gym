@@ -366,19 +366,56 @@ td.item-description  {
 #session-gym-class {
   position:relative;
   width: 100%;
-  background-color: lightblue;
+
 
 }
 
 #session-gym-class-description {
   width: 50%;
-  background-color:pink;
+
 }
 
 #session-gym-class-booked {
   width: 50%;
+  padding-bottom: 10px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  background-color: #c7e8cb;
 }
 
 #session-gym-class-reserve {
   width: 50%;
+  min-height: 100px;
+  padding-bottom: 10px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  background-color: #f7d2be;
+}
+
+.person-booked, .person-reserve {
+  position: relative;
+  display:block;
+  width: 80px;
+  margin: 5px;
+
+
+}
+.person-booked p, .person-reserve p{
+    font-size: 10px;
+    display:block;
+    text-align:center;
+    height: 10px;
+    margin:2px;
+    padding:0;
+
+}
+.person-booked {
+
+}
+.person-reserve {
+
+}
+.person-booked-image, .person-reserve-image {
+  display:block;
+  width: 80px;
 }

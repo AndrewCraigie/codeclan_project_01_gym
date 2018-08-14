@@ -13,6 +13,7 @@
     <p class="description-para"><%= para %></p>
     <% end  %>
   </div>
+  <h3>Booked</h3>
   <div id="session-gym-class-booked">
     <% @session.booked().each do |booked| %>
     <div class="person-booked">
@@ -22,6 +23,7 @@
     </div>
     <% end %>
   </div>
+  <h3>Reserve</h3>
   <div id="session-gym-class-reserve">
   <% @session.reserve().each do |reserve| %>
   <div class="person-reserve">
