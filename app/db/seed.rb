@@ -58,8 +58,15 @@ membership_type2 = MembershipType.new({
   'description' => 'Premium memberhip'
   })
 
+
+membership_type3 = MembershipType.new({
+  'name' => 'employee',
+  'description' => 'Staff memberhip'
+})
+
 membership_type1.save()
 membership_type2.save()
+membership_type3.save()
 
 room1 = Room.new({
   'name' => 'Studio 1'
@@ -282,8 +289,16 @@ membership2 = Membership.new({
   'membership_type_id' => membership_type2.id
 })
 
+membership3 = Membership.new({
+  'membership_number' => 3,
+  'start_date' => '2017-06-21',
+  'end_date' => '2018-06-20',
+  'membership_type_id' => membership_type3.id
+})
+
 membership1.save()
 membership2.save()
+membership3.save()
 
 person_membership1 = PersonMembership.new({
   'person_id' => person1.id,
@@ -295,8 +310,14 @@ person_membership2 = PersonMembership.new({
   'membership_id' => membership2.id
 })
 
+person_membership3 = PersonMembership.new({
+  'person_id' => person2.id,
+  'membership_id' => membership3.id
+})
+
 person_membership1.save()
 person_membership2.save()
+person_membership3.save()
 
 
 gym_class1 = GymClass.new({

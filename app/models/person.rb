@@ -1,4 +1,5 @@
-
+require ('pry')
+require_relative ('membership')
 require_relative( '../db/sql_runner' )
 
 
@@ -136,6 +137,37 @@ class Person
     result = SqlRunner.run(sql, value).first
     return result['name']
   end
+
+  # def membership()
+  #   sql = "SELECT memberships.*
+  #   FROM memberships
+  #   INNER JOIN persons_memberships
+  #   ON memberships.id = persons_memberships.membership_id
+  #   INNER JOIN persons
+  #   ON persons_memberships.person_id = persons.id
+  #   WHERE persons.id = $1"
+  #   value = [@id]
+  #   result = SqlRunner.run(sql,value)first
+  #   if result.empty?
+  #     return "none"
+  #   else
+  #     return Membership.new(result)
+  #   end
+  # end
+
+  # def membership_id()
+  #   sql = "SELECT * FROM persons_memberships
+  #         WHERE person_id = $1"
+  #   value = [@id]
+  #   result = SqlRunner.run(sql, value).first
+  #   if result != nil
+  #     return result['membersip_id']
+  #   else
+  #     return "none"
+  #   end
+  #
+  #
+  # end
 
 
 end
