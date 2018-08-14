@@ -117,9 +117,6 @@ footer {
   border-top: 4px solid darkorange;
 }
 
-input[name=delete] {
-  background-color: red;
-}
 
 section nav {
   width: 100%;
@@ -220,4 +217,56 @@ td.item-description  {
 
 .table-instructions {
   font-size: 0.8em;
+}
+
+/* -- Item form -- */
+.edit-item-form {
+  border:1px solid darkgray;
+  border-radius: 0.5em;
+  padding: 1.5em;
+  width: 60%;
+  background-color: #fce1c9;
+}
+
+.edit-item-form label {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+  font-weight: bolder;
+}
+.edit-item-form input[type=text]{
+  width: 95%;
+  font-size: 1.1em;
+  padding:0.1em;
+}
+
+
+#form-btns {
+  width:95%;
+  height: 3em;
+  margin-top: 1.5em;
+  position: relative;
+}
+
+.form-btn {
+  display: inline-block;
+  padding: 0.6em;
+  border-radius: 0.4em;
+  font-size: 1.1em;
+
+}
+
+.edit-item-form input[name=delete] {
+  float: left;
+  background-color: red;
+  color: white;
+
+}
+
+
+#submit-btn {
+  background-color: darkorange;
+  float: right;
+  color: white;
+  padding: 0.8em;
 }

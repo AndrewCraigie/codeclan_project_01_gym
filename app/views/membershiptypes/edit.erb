@@ -1,14 +1,16 @@
 <h2>Edit Membership Type</h2>
 <%= erb('membershiptypes/membershiptypes_nav'.to_sym)  %>
-<form class="membershiptype-form" action="/membershiptypes/<%= @membershiptype.id %>" method="post">
+<form class="edit-item-form" action="/membershiptypes/<%= @membershiptype.id %>" method="post">
 
-  <label for="membershiptype-name"></label>
-  <input id="membershiptype-name" type="text" name="name" value="<%= @membershiptype.name %>">
+  <label for="membershiptype-name">Name</label>
+  <input id="membershiptype-name" type="text" name="name" value="<%= @membershiptype.name %>" required>
 
-  <label for="membershiptype-description"></label>
-  <input type="text" name="description" value="<%= @membershiptype.description %>">
+  <label for="membershiptype-description">Description</label>
+  <input type="text" name="description" value="<%= @membershiptype.description %>" required>
 
-  <input type="submit" name="delete" value="DELETE Membership Type ⚠️" formaction="/membershiptypes/<%= @membershiptype.id %>/delete">
+  <div id="form-btns">
+  <input class="form-btn delete" type="submit" name="delete" value="⚠️ DELETE Membership Type " formaction="/membershiptypes/<%= @membershiptype.id %>/delete">
 
-  <input type="submit" name="submit" value="Update Membership Type">
+  <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Update Membership Type">
+</div>
 </form>

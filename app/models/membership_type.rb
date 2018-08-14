@@ -36,7 +36,12 @@ class MembershipType
 
   # Seems to be an issue using ORDER by <variable> in Prepare statements!!
   def self.all_ordered(prop, direction)
-    sql = "SELECT * FROM membership_types ORDER BY #{prop} #{direction.upcase!}"
+    valid = ['id', 'name', 'description']
+    if valid.include?(prop)
+      sql = "SELECT * FROM membership_types ORDER BY #{prop} #{direction.upcase!}"
+    else
+      sql = "SELECT * FROM membership_types"
+    end
     results = SqlRunner.run(sql)
     return results.map { |result| MembershipType.new(result)}
   end
