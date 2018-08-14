@@ -1,0 +1,16 @@
+<h2>Add Gym Class Category</h2>
+<%= erb('gym_class_categories/gym_class_categories_nav'.to_sym)  %>
+
+<form class="edit-item-form" action="/gym_class_categories" method="post">
+
+  <label for="gym-class-category-name">Name</label>
+  <input id="gym-class-category-name" type="text" name="name" required>
+
+  <label for="gym-class-category-description">Description</label>
+  <input id="gym-class-category-description" type="text" name="description" required>
+
+  <div id="form-btns">
+    <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add New Gym Class Category">
+  </div>
+
+</form>

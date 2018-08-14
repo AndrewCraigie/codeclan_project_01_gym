@@ -1,0 +1,24 @@
+<h2>All Gym Class Categories</h2>
+<%= erb('gym_class_categories/roles_nav'.to_sym)  %>
+
+<table class='item-table'>
+<thead>
+  <tr class="item-table-sort-row">
+    <th><a href="/gym_class_categories/sort/asc/id" class="item-table-sort">&uarr;</><a href="/gym_class_categories/sort/desc/id" class="item-table-sort">&darr;</></th>
+    <th><a href="/gym_class_categories/sort/asc/name" class="item-table-sort">&uarr;</><a href="/gym_class_categories/sort/desc/name" class="item-table-sort">&darr;</></th>
+  </tr>
+<tr class="item-table-labels">
+  <th>ID</th>
+  <th>Name</th>
+</tr>
+</thead>
+<tbody>
+<% @gym_class_categories.each do |gym_class_category| %>
+<tr>
+  <td class="item-id"><a href="/gym_class_categories/<%= gym_class_category.id %>/edit"><%= gym_class_category.id %></a></td>
+  <td class="item-name"><%= gym_class_category.name %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<p class="table-instructions">Click ID number to edit or delete<p>
