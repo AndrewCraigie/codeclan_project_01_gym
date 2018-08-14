@@ -1,0 +1,50 @@
+<h2>Edit Member Details</h2>
+<%= erb('persons/persons_nav'.to_sym)  %>
+
+<form class="edit-item-form new-member-form" action="/persons" method="post">
+
+  <div id="photo-group">
+<img id="detail-member-photo" src="/member_images/blank.jpg" alt="">
+<label for="person-photo-url">Photo Url</label>
+<!-- <input id="person-photo-url" type="text" name="photo_url" value="blank.jpg"> -->
+<input type="file" name="photo_url" value="blank.jpg">
+  </div>
+
+
+  <label class="name-label" for="person-fisrt-name">First Name</label>
+  <input class="name-input" id="person-first-name" type="text" name="first_name" required>
+
+
+  <label class="name-label"  for="person-last-name">Last Name</label>
+  <input class="name-input" id="person-last-name" type="text" name="last_name"  required>
+
+  <label id="label-street-address" for="person-street-address">Steet Address</label>
+  <input id="person-street-address" type="text" name="street_address"  required>
+
+  <label for="person-city">City</label>
+  <input id="person-city" type="text" name="city"  required>
+
+  <label for="person-postcode">Postcode</label>
+  <input id="person-postcode" type="text" name="postcode" required>
+
+  <label for="person-telephone-number">Telephone</label>
+  <input id="person-telephone-number" type="text" name="telephone_number" required>
+
+  <label for="person-mobile-number">Mobile</label>
+  <input id="person-mobile-number" type="text" name="mobile_number"  >
+
+  <label for="person-email-address">Email Address</label>
+  <input id="person-email-address" type="text" name="email_address" required>
+
+  <label for="person-role-id">Role</label>
+  <select id="person-role-id" class="role-select" name="role_id">
+    <% @roles.each do |role| %>
+      <option value="<%= role.id %>"><%= role.name %></option>
+    <%  end  %>
+  </select>
+  <div class="submit-group">
+    <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add New Member">
+  </div>
+</div>
+
+</form>

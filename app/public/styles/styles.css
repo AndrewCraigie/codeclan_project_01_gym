@@ -270,3 +270,51 @@ td.item-description  {
   color: white;
   padding: 0.8em;
 }
+
+#person-role-id {
+  width: 50%;
+  font-size: 1em;
+  padding: 0.2em;
+}
+
+.item-list-member-photo {
+  width: 100px;
+}
+
+#photo-group {
+  position: relative;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  width: 220px;
+  float:right;
+  margin: 10px;
+  padding: 10px;
+}
+
+#detail-member-photo {
+  display:block;
+  width: 200px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#person-first-name {
+  width: 40%;
+}
+#person-last-name {
+  width: 40%;
+}
+
+#label-street-address {
+  clear:both;
+}
+
+.employee-emoji {
+  font-size: 2em;
+}
+.submit-group {
+  position:relative;
+  width: 100%;
+  height: 3em;
+  clear: both;
+}

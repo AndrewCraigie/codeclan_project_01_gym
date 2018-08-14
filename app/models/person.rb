@@ -43,6 +43,17 @@ class Person
     return Person.new(result)
   end
 
+  def self.all_ordered(prop, direction)
+    valid = ['id', 'first_name', 'last_name', 'street_address', 'city', 'postcode', 'telephone_number', 'mobile_number', 'email_address', 'photo_url', 'role_id']
+    if valid.include?(prop)
+      sql = "SELECT * FROM persons ORDER BY #{prop} #{direction.upcase!}"
+    else
+      sql = "SELECT * FROM persons"
+    end
+    results = SqlRunner.run(sql)
+    return results.map { |result| Person.new(result)}
+  end
+
   # --- Instance methods
 
   def save()
@@ -116,6 +127,14 @@ class Person
           WHERE id = $1"
     value = [@id]
     SqlRunner.run(sql, value)
+  end
+
+  def role()
+    sql = "SELECT name FROM roles
+          WHERE id = $1"
+    value = [@role_id]
+    result = SqlRunner.run(sql, value).first
+    return result['name']
   end
 
 
