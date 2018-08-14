@@ -4,6 +4,11 @@ require( 'pry')
 require_relative( '../models/role' )
 also_reload( '../models/*' )
 
+get '/roles/sort/:direction/:prop' do
+  @roles = Role.all_ordered(params[:prop], params[:direction])
+  erb ("roles/index".to_sym)
+end
+
 # INDEX route
 get '/roles' do
   @roles = Role.all()

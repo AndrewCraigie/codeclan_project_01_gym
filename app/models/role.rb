@@ -33,6 +33,17 @@ class Role
     return Role.new(result)
   end
 
+  def self.all_ordered(prop, direction)
+    valid = ['id', 'name']
+    if valid.include?(prop)
+      sql = "SELECT * FROM roles ORDER BY #{prop} #{direction.upcase!}"
+    else
+      sql = "SELECT * FROM roles"
+    end
+    results = SqlRunner.run(sql)
+    return results.map { |result| Role.new(result)}
+  end
+
   # --- Instance methods
 
   def save()

@@ -1,6 +1,24 @@
 <h2>All Roles</h2>
 <%= erb('roles/roles_nav'.to_sym)  %>
 
+<table class='item-table'>
+<thead>
+  <tr class="item-table-sort-row">
+    <th><a href="/roles/sort/asc/id" class="item-table-sort">&uarr;</><a href="/roles/sort/desc/id" class="item-table-sort">&darr;</></th>
+    <th><a href="/roles/sort/asc/name" class="item-table-sort">&uarr;</><a href="/roles/sort/desc/name" class="item-table-sort">&darr;</></th>
+  </tr>
+<tr class="item-table-labels">
+  <th>ID</th>
+  <th>Name</th>
+</tr>
+</thead>
+<tbody>
 <% @roles.each do |role| %>
-<p><%= role.id %>: <%= role.name %> <a href="/roles/<%= role.id %>/edit">Edit</a></p>
+<tr>
+  <td class="item-id"><a href="/roles/<%= role.id %>/edit"><%= role.id %></a></td>
+  <td class="item-name"><%= role.name %></td>
+</tr>
 <% end %>
+</tbody>
+</table>
+<p class="table-instructions">Click ID number to edit or delete<p>
