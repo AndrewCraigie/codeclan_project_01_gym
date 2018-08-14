@@ -1,0 +1,36 @@
+<h2>All Rooms</h2>
+<%= erb('gym_classes/gym_classes_nav'.to_sym)  %>
+
+<table class='item-table'>
+<thead>
+  <tr class="item-table-sort-row">
+    <th><a href="/gym_classes/sort/asc/id" class="item-table-sort">&uarr;</><a href="/gym_classes/sort/desc/id" class="item-table-sort">&darr;</></th>
+    <th><a href="/gym_classes/sort/asc/name" class="item-table-sort">&uarr;</><a href="/gym_classes/sort/desc/name" class="item-table-sort">&darr;</></th>
+
+      <th><a href="/gym_classes/sort/asc/description" class="item-table-sort">&uarr;</><a href="/gym_classes/sort/desc/description" class="item-table-sort">&darr;</></th>
+
+        <th><a href="/gym_classes/sort/asc/intensity_id" class="item-table-sort">&uarr;</><a href="/gym_classes/sort/desc/intensity_id" class="item-table-sort">&darr;</></th>
+  </tr>
+<tr class="item-table-labels">
+  <th>ID</th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Intensity</th>
+</tr>
+</thead>
+<tbody>
+<% @gym_classes.each do |gym_class| %>
+<tr>
+  <td class="item-id"><a href="/gym_classes/<%= gym_class.id %>/edit"><%= gym_class.id %></a></td>
+  <td class="item-name"><%= gym_class.name %></td>
+
+  <td class="item-gym-class-description-cell">
+    <textarea class="item-gym-class-description" readonly><%= gym_class.description %></textarea>
+  </td>
+
+  <td class="item-name"><%= gym_class.intensity_id %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<p class="table-instructions">Click ID number to edit or delete<p>

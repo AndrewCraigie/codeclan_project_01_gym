@@ -1,0 +1,21 @@
+<h2>Add Gym Class</h2>
+<%= erb('gym_classes/gym_classes_nav'.to_sym)  %>
+
+<form class="edit-item-form" action="/gym_classes" method="post">
+
+  <label for="gym-class-name">Name</label>
+  <input id="gym-class-name" type="text" name="name" required>
+
+  <label for="gym-class-description">Description</label>
+  <textarea  id="gym-class-description" name="description">Enter description here</textarea>
+
+  <select class="gym-class-intensity-select" name="intensity_id">
+    <% @intensities.each do |intensity| %>
+    <option value="<%= intensity.id %>"><%= intensity.name %></option>
+    <% end %>
+  </select>
+
+  <div id="form-btns">
+  <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Add Gym Class">
+</div>
+</form>

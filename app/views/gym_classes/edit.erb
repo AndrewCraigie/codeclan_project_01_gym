@@ -1,0 +1,31 @@
+<h2>Edit Gym Class</h2>
+<%= erb('gym_classes/gym_classes_nav'.to_sym)  %>
+
+<form class="edit-item-form" action="/gym_classes/<%= @gym_class.id %>" method="post">
+
+  <label for="gym-class-name">Name</label>
+  <input id="gym-class-name" type="text" name="name" value="<%= @gym_class.name %>" required>
+
+  <label for="gym-class-description">Description</label>
+  <textarea  id="gym-class-description" name="description"><%= @gym_class.description %></textarea>
+
+  <!-- <label for="gym-class-intensity">Intensity Level</label>
+  <input id="gym-class-intensity" type="text" name="intensity_id" value="<%= @gym_class.intensity_id %>" required> -->
+
+  <select class="gym-class-intensity-select" name="intensity_id">
+    <% @intensities.each do |intensity| %>
+    <% if @gym_class.intensity_id == intensity.id %>
+    <option value="<%= intensity.id %>" selected><%= intensity.name %></option>
+    <% else %>
+<option value="<%= intensity.id %>"><%= intensity.name %></option>
+    <% end %>
+    <% end %>
+  </select>
+
+
+  <div id="form-btns">
+  <input class="form-btn delete" type="submit" name="delete" value="⚠️ DELETE Room " formaction="/gym_classes/<%= @gym_class.id %>/delete">
+
+  <input id="submit-btn" class="form-btn submit" type="submit" name="submit" value="Update Gym Class">
+</div>
+</form>
