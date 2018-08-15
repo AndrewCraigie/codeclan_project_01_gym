@@ -33,9 +33,16 @@ class Booking
   def cancel()
 
     person_sessions = PersonSession.find_by_person_session(@person.id, @session.id)
-    person_sessions.each {|person_session| person_session.delete()}
 
-    PersonSession.update_reserves(@session.id)
+    puts "person sessions found #{person_sessions.count}"
+    #person_sessions.each {|person_session| person_session.delete()}
+
+    person_sessions.each do |person_session|
+      person_session.delete()
+      #PersonSession.update_reserves(@session.id)
+    end
+
+    #PersonSession.update_reserves(@session.id)
 
   end
 

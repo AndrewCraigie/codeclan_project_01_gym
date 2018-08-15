@@ -64,7 +64,7 @@ class PersonSession
       results.each do |result|
         person_session = PersonSession.new(result)
         person_session.reserve = 'false'
-        persion_session.update()
+        person_session.update()
       end
 
     end

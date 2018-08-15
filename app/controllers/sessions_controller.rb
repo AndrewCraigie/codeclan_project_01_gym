@@ -82,7 +82,7 @@ post '/sessions/show/:id/:class_id/remove/persons' do
     @person = Person.find_by_id(person_id)
     @booking = Booking.new(@person, @session, DateTime.now().to_s, 'false')
     @booking.cancel()
-    
+    PersonSession.update_reserves(@session.id)
   end
 
   erb('sessions/show'.to_sym)
