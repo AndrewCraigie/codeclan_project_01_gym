@@ -101,5 +101,4 @@ class Membership
     return @end_date.strftime("%A, %e, %B, %Y")
   end
 
-
 end

@@ -235,7 +235,7 @@ td.item-description  {
 }
 
 /* -- Item form -- */
-.edit-item-form {
+.edit-item-form, .session-add {
   border:1px solid darkgray;
   border-radius: 0.5em;
   padding: 1.5em;
@@ -243,13 +243,13 @@ td.item-description  {
   background-color: #fce1c9;
 }
 
-.edit-item-form label {
+.edit-item-form label, .session-add label {
   display: block;
   margin-top: 1em;
   margin-bottom: 0.4em;
   font-weight: bolder;
 }
-.edit-item-form input[type=text]{
+.edit-item-form input[type=text], .session-add input[type=text]{
   width: 95%;
   font-size: 1.1em;
   padding:0.1em;
@@ -560,4 +560,25 @@ td.item-description  {
   height: 30px;
   font-size: 1em !important;
   margin-top: 10px;
+}
+
+.session-add {
+  width: 60%;
+  border: 1px solid darkgray;
+
+}
+
+.session-add select {
+  width: 40%;
+  height: 30px;
+  font-size: 1.2em;
+  display:block;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.session-add input[type=number] {
+  height: 30px;
+  width: 60px;
+  font-size: 1.2em;
 }
