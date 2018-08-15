@@ -57,20 +57,36 @@ get '/sessions/show/:id/:class_id/:person_id' do
   erb('sessions/show'.to_sym)
 end
 
+post '/sessions/show/:id/:class_id/remove/persons' do
+
+  @params_inspect = params.inspect
+
+  @session = Session.find_by_id(params['id'])
+  @gym_class = GymClass.find_by_id(params['class_id'])
+
+  params['persons']['remove'].each do |person_id|
+    @person = Person.find_by_id(person_id)
+    @booking = Booking.new(@person, @session, DateTime.now().to_s, 'false')
+    @booking.cancel()
+  end
+
+  erb('sessions/show'.to_sym)
+
+end
+
 post '/sessions/show/:id/:class_id/:person_id' do
 
   @session = Session.find_by_id(params['id'])
   @gym_class = GymClass.find_by_id(params['class_id'])
   @person = Person.find_by_id(params['person_id'])
-
   reserve = !@session.spaces_available()
-
   @booking = Booking.new(@person, @session, DateTime.now().to_s, reserve.to_s)
   @booking.save()
-
   erb('sessions/show'.to_sym)
 
 end
+
+
 
 
 # UPDATE

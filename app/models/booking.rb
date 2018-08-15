@@ -31,5 +31,12 @@ class Booking
     person_session.save()
   end
 
+  def cancel()
+
+    person_sessions = PersonSession.find_by_person_session(@person.id, @session.id)
+    person_sessions.each {|person_session| person_session.delete()}
+
+  end
+
 
 end

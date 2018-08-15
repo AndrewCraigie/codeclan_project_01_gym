@@ -14,10 +14,16 @@
     </div>
 
   <h3>Booked <span class='spaces-available'><%= @session.space_count %> Spaces Avaialble</span></h3>
+  <form class="members-booked" action="/sessions/show/<%= @session.id %>/<%= @gym_class.id %>/remove/persons" method="post">
+
+
     <div id="session-gym-class-booked">
       <% @counter = 0 %>
       <% @session.booked().each do |booked| %>
       <div class="person-booked">
+
+        <input id="person-<%= booked.person.id %>" class="booked-person-check" type="checkbox" name="persons[remove][]" value="<%= booked.person.id %>">
+
         <img class="person-booked-image" src="/member_images/<%= booked.person.photo_url %>"/>
         <p><%= booked.person.pretty_name%></p>
         <p><%= booked.date_time_added %></p>
@@ -30,13 +36,15 @@
       <div class="person-booked">
         <img class="person-booked-image" src="/member_images/free.jpg"/>
         <p>&nbsp;</p>
-        <p>space</p>
+        <p>space</br>&nbsp;</p>
       </div>
 
       <% @counter += 1 %>
       <% end %>
 
   </div>
+  <input id="remove-btn" type="submit" name="submit" value="Remove From Class">
+  </form>
 
   <h3 id="reserve-header">Reserve</h3>
     <div id="session-gym-class-reserve">
@@ -78,7 +86,7 @@
     <% end %>
 
   </div>
-
+  <%= @params_inspect %>
 
 
 </div>

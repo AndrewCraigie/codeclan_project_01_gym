@@ -504,7 +504,7 @@ td.item-description  {
 .session-person-form input[type=submit] {
   display:block;
   width: 50%;
-  height: 50px;
+  height: 30px;
   font-size: 1.3em !important;
 }
 
@@ -540,4 +540,24 @@ td.item-description  {
   height: 40px;
   z-index: 50;
   line-height: 40px;
+}
+.booked-person-check {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display:block;
+  width: 15px;
+  height: 15px;
+}
+
+.person-booked {
+  position: relative;
+}
+
+#remove-btn {
+  display:block;
+  width: 50%;
+  height: 30px;
+  font-size: 1.3em !important;
+  margin-top: 10px;
 }

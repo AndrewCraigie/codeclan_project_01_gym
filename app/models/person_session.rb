@@ -37,6 +37,15 @@ class PersonSession
     return PersonSession.new(result)
   end
 
+  def self.find_by_person_session(person_id, session_id)
+    sql = "SELECT * FROM persons_sessions
+          WHERE person_id = $1
+          AND session_id = $2"
+    values = [person_id, session_id]
+    results = SqlRunner.run(sql, values)
+    return results.map {|result| PersonSession.new(result)}
+  end
+
   # --- Instance methods
 
   def save()
