@@ -37,6 +37,10 @@ end
 
 # EDIT
 get '/sessions/:id/edit' do
+  @rooms = Room.all()
+  @gym_classes = GymClass.all()
+  role = Role.find_by_name('employee')
+  @instructors = Person.all_by_role(role.id)
   @session = Session.find_by_id(params['id'].to_i)
   erb ("sessions/edit".to_sym)
 end

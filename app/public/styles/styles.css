@@ -589,11 +589,20 @@ td.item-description  {
    text-align: center;
  }
 
+ #right-arm {
+   display:inline-block;
+   font-size: 3em;
+ }
+
  #left-arm {
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
+   display:inline-block;
+   font-size: 3em;
+ }
+
+ #left-arm {
+   -moz-transform: scale(-1, 1);
+ -webkit-transform: scale(-1, 1);
+ -o-transform: scale(-1, 1);
+ -ms-transform: scale(-1, 1);
+ transform: scale(-1, 1);
  }
