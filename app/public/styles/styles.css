@@ -164,6 +164,7 @@ section nav a {
 .item-table {
    border-collapse: collapse;
    border-bottom: 2px solid darkorange;
+   background-color: transparent;
 }
 .item-table-labels {
   background-color:darkorange;
@@ -187,7 +188,7 @@ section nav a {
 
 .item-table td {
   text-align: left;
-    padding: 0.5em;
+  padding: 0.5em;
 }
 .item-list-item {
   height: 2.5em;
@@ -491,7 +492,6 @@ td.item-description  {
 .find-person input[type=submit]{
   width: 50px;
   height: 40px;
-
 }
 
 .session-person-form {
@@ -506,4 +506,38 @@ td.item-description  {
   width: 50%;
   height: 50px;
   font-size: 1.3em !important;
+}
+
+.item-table td.item-capacity {
+  padding: 0 !important;
+  position: relative;
+  height: 40px;
+}
+
+.capacity-outer {
+  position:absolute;
+  top:0;
+  left:0;
+  margin:0;
+  width: 100%;
+  height: 40px;
+  border-right: 1px solid darkgray;
+}
+.capacity-inner{
+  display:block;
+  height: 40px;
+  margin:0;
+  position: absolute;
+  left:0;
+  top:0;
+  /* z-index: 1000; */
+}
+
+.capcity-value {
+  position:absolute;
+  top:0;
+  width: 100%;
+  height: 40px;
+  z-index: 50;
+  line-height: 40px;
 }

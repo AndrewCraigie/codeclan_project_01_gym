@@ -6,7 +6,6 @@
   <tr class="item-table-sort-row">
     <th><a href="/sessions/sort/asc/id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/id" class="item-table-sort">&darr;</></th>
 
-
     <th><a href="/sessions/sort/asc/gym_class_id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/gym_class_id" class="item-table-sort">&darr;</></th>
 
     <th><a href="/sessions/sort/asc/start_time" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/start_time" class="item-table-sort">&darr;</></th>
@@ -14,16 +13,11 @@
     <th>&nbsp;</th>
     <th>&nbsp;</th>
 
-
-
     <th><a href="/sessions/sort/asc/capacity" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/capacity" class="item-table-sort">&darr;</></th>
-
-
 
     <th><a href="/sessions/sort/asc/instructor_id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/instructor_id" class="item-table-sort">&darr;</></th>
 
     <th><a href="/sessions/sort/asc/room_id" class="item-table-sort">&uarr;</><a href="/sessions/sort/desc/room_id" class="item-table-sort">&darr;</></th>
-
 
   </tr>
 <tr class="item-table-labels">
@@ -32,7 +26,6 @@
   <th>Date</th>
   <th>Start</th>
   <th>Duration</th>
-
   <th>Capacity</th>
   <th>Instructor</th>
   <th>Room</th>
@@ -42,15 +35,22 @@
 <% @sessions.each do |session| %>
 <tr>
   <td class="item-id"><a href="/sessions/<%= session.id %>/edit"><%= session.id %></a></td>
-
   <td class="item-class-id"><a id="session-<%= session.id %>" href="/sessions/show/<%= session.id %>/<%= session.gym_class_id %>/all"><%= session.gym_class_name %></a></td>
   <td class="item-list-date"><%= session.date %></td>
   <td class="item-start-time"><%= session.start %></td>
   <td class='item-duration'><%= session.duration %></td>
 
-  <td class="item-start-time"><%= session.capacity %></td>
-  <td class="item-start-time"><%= session.instructor_id %></td>
-  <td class="item-start-time"><%= session.room_id%></td>
+  <td class="item-capacity">
+    <div class="capacity-outer">
+        <div class="capacity-inner" style="background-color:<%= "#ffddbf" %>;width:<%= session.percentage_full %>%;">
+        </div>
+      </div>
+      <div class="capcity-value"><%= session.capacity %>
+    </div>
+  </td>
+
+  <td class="item-start-instructor"><%= session.instructor_id %></td>
+  <td class="item-start-session"><%= session.room_id%></td>
 </tr>
 <% end %>
 </tbody>

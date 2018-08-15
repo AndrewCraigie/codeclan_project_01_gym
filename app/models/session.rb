@@ -181,6 +181,11 @@ class Session
 
   end
 
+  def percentage_full()
+    percentage_full = @capacity / space_count().to_f
+    return percentage_full
+  end
+
 
 
 
