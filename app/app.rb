@@ -15,8 +15,6 @@ require_relative('controllers/sessions_controller')
 
 also_reload( '../models/*' )
 
-
-
 get '/' do
   redirect('/sessions'.to_sym)
   erb(:sessions)

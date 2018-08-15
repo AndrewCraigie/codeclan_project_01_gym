@@ -94,11 +94,11 @@ class Membership
   end
 
   def pretty_start_date()
-    return @start_date.strftime("%A, %e, $B, %Y")
+    return @start_date.strftime("%A, %e, %B, %Y")
   end
 
   def pretty_end_date()
-    return @end_date.strftime("%A, %e, $B, %Y")
+    return @end_date.strftime("%A, %e, %B, %Y")
   end
 
 

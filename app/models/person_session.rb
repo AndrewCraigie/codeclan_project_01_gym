@@ -55,7 +55,7 @@ class PersonSession
     if spaces_available > 0
       sql = "SELECT * FROM persons_sessions
             WHERE session_id = $1
-            AND reserve = TRUE
+            AND reserve = 't'
             ORDER BY date_time_added ASC
             LIMIT $2"
       values = [session.id, spaces_available.to_i]
