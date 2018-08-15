@@ -23,16 +23,23 @@
 
   <!-- instructor  -->
   <select class="session-instructor" name="instructor_id">
-    
     <% @instructors.each do |instructor| %>
+    <% if instructor.id == @session.instructor_id %>
+      <option value="<%= instructor.id %>" selected><%= instructor.pretty_name %></option>
+      <% else %>
       <option value="<%= instructor.id %>"><%= instructor.pretty_name %></option>
+      <% end %>
     <% end %>
   </select>
 
   <!-- room -->
   <select class="session-room" name="room_id">
     <% @rooms.each do |room|  %>
+    <% if room.id == @session.room_id %>
+      <option value="<%= room.id %>" selected><%= room.name %></option>
+      <% else %>
       <option value="<%= room.id %>"><%= room.name %></option>
+      <% end %>
     <% end %>
   </select>
 
