@@ -3,6 +3,9 @@ require( 'sinatra/contrib/all' )
 require( 'pry')
 require_relative( '../models/person' )
 require_relative( '../models/session' )
+require_relative( '../models/gym_class' )
+require_relative( '../models/room' )
+require_relative( '../models/role' )
 require_relative( '../models/person_session' )
 also_reload( '../models/*' )
 
@@ -18,6 +21,10 @@ get '/sessions' do
 end
 
 get '/sessions/new' do
+  @rooms = Room.all()
+  @gym_classes = GymClass.all()
+  role = Role.find_by_name('employee')
+  @instructors = Person.all_by_role(role.id)
   erb('sessions/new'.to_sym)
 end
 
@@ -110,6 +117,7 @@ end
 
 # CREATE
 post '/sessions' do
+
   @session = Session.new(params)
   @session.save()
   redirect ('/sessions')

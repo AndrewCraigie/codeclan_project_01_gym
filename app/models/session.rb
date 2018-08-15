@@ -167,11 +167,11 @@ class Session
   end
 
   def spaces_available()
-    sql = "SELECT COUNT(session_id)
-          FROM persons_sessions
-          WHERE session_id = $1"
-    value = [@id]
-    result = SqlRunner.run(sql, value).first
+    # sql = "SELECT COUNT(session_id)
+    #       FROM persons_sessions
+    #       WHERE session_id = $1"
+    # value = [@id]
+    # result = SqlRunner.run(sql, value).first
 
     if space_count < @capacity
       return true
@@ -182,7 +182,7 @@ class Session
   end
 
   def available_count()
-    return @capacity / space_count().to_f
+    return @capacity - space_count()
   end
 
   def percentage_full()

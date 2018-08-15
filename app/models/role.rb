@@ -44,6 +44,16 @@ class Role
     return results.map { |result| Role.new(result)}
   end
 
+  def self.find_by_name(role_name)
+    sql = "SELECT * FROM roles
+      WHERE name LIKE $1"
+    value = [role_name]
+    result = SqlRunner.run(sql, value).first
+    role = Role.new(result)
+    puts "Role found #{role.name}  #{role.id}"
+    return role
+  end
+
   # --- Instance methods
 
   def save()

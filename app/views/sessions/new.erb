@@ -1,0 +1,35 @@
+<h2>Add New Session</h2>
+<%= erb('sessions/sessions_nav'.to_sym)  %>
+<form class="session-add" action="/sessions" method="post">
+  <label for="session-start-time">Start Time</label>
+  <input id="session-start-time" type="text" name="start_time">
+
+  <label for="session-end-time">End Time</label>
+  <input id="session-end-time" type="text" name="end_time">
+
+  <label for="session-capacity">Capacity</label>
+  <input id="session-capacity" type="number" name="capacity" min="1">
+
+  <!-- gym class -->
+  <select class="session-gym-classes" name="gym_class_id">
+    <% @gym_classes.each do |gym_class| %>
+    <option value="<%= gym_class.id %>"><%= gym_class.name %></option>
+    <% end %>
+  </select>
+
+  <!-- instructor  -->
+  <select class="session-instructor" name="instructor_id">
+    <% @instructors.each do |instructor| %>
+      <option value="<%= instructor.id %>"><%= instructor.pretty_name %></option>
+    <% end %>
+  </select>
+
+  <!-- room -->
+  <select class="session-room" name="room_id">
+    <% @rooms.each do |room|  %>
+      <option value="<%= room.id %>"><%= room.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" name="submit" value="Add New Session">
+</form>

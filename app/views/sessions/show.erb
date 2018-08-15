@@ -13,7 +13,7 @@
       <% end  %>
     </div>
 
-  <h3>Booked <span class='spaces-available'><%= @session.space_count %> Spaces Avaialble</span></h3>
+  <h3>Booked <span class='spaces-available'><%= @session.available_count %> Spaces Avaialble</span></h3>
   <form class="members-booked" action="/sessions/show/<%= @session.id %>/<%= @gym_class.id %>/remove/persons" method="post">
 
 
@@ -90,7 +90,7 @@
     <% end %>
 
   </div>
-  
+
 
 
 </div>

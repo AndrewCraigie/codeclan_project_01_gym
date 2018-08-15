@@ -36,6 +36,14 @@ class Person
     return results.map { |person| Person.new(person)}
   end
 
+  def self.all_by_role(role_id)
+    sql = "SELECT * FROM persons
+          WHERE role_id = $1"
+    value = [role_id]
+    results = SqlRunner.run(sql, value)
+    return results.map { |result| Person.new(result)}
+  end
+
   def self.find_by_id(id)
     sql = "SELECT * FROM persons
           WHERE id = $1"
