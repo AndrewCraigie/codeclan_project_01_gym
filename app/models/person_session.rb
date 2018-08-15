@@ -46,6 +46,32 @@ class PersonSession
     return results.map {|result| PersonSession.new(result)}
   end
 
+  def self.update_reserves(session_id)
+    # check spaces
+    session = Session.find_by_id(session_id)
+    spaces_available = session.available_count()
+
+    #get reserves
+    if spaces_available > 0
+      sql = "SELECT * FROM persons_sessions
+            WHERE session_id = $1
+            AND reserve = TRUE
+            ORDER BY date_time_added ASC
+            LIMIT $2"
+      values = [session.id, spaces_available.to_i]
+      results = SqlRunner.run(sql, values)
+
+      results.each do |result|
+        person_session = PersonSession.new(result)
+        person_session.reserve = 'false'
+        persion_sesion.update()
+      end
+
+    end
+
+
+  end
+
   # --- Instance methods
 
   def save()

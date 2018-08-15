@@ -35,6 +35,8 @@ class Booking
     person_sessions = PersonSession.find_by_person_session(@person.id, @session.id)
     person_sessions.each {|person_session| person_session.delete()}
 
+    PersonSession.update_reserves(@session.id)
+
   end
 
 
