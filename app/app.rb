@@ -18,7 +18,8 @@ also_reload( '../models/*' )
 
 
 get '/' do
-  erb(:index)
+  redirect('/sessions'.to_sym)
+  erb(:sessions)
 end
 
 get '/admin' do

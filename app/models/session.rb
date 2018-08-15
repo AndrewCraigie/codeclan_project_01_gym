@@ -186,11 +186,17 @@ class Session
   end
 
   def available_count()
-    if  @capacity - space_count() >= 0
-      return @capacity - space_count()
-    else
-      return 0
-    end
+
+    # if  @capacity - space_count() >= 0
+    #   return @capacity - space_count()
+    # else
+    #   return 0
+    # end
+
+    return @capcity - space_count()
+
+
+
   end
 
   def percentage_full()
