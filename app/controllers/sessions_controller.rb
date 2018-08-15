@@ -75,7 +75,6 @@ end
 
 post '/sessions/show/:id/:class_id/remove/persons' do
 
-
   @session = Session.find_by_id(params['id'])
   @gym_class = GymClass.find_by_id(params['class_id'])
 
@@ -83,6 +82,7 @@ post '/sessions/show/:id/:class_id/remove/persons' do
     @person = Person.find_by_id(person_id)
     @booking = Booking.new(@person, @session, DateTime.now().to_s, 'false')
     @booking.cancel()
+    
   end
 
   erb('sessions/show'.to_sym)

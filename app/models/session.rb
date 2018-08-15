@@ -122,8 +122,10 @@ class Session
     ON sessions.id = persons_sessions.session_id
     INNER JOIN persons
     ON persons_sessions.person_id = persons.id
-    WHERE persons_sessions.reserve = FALSE"
-    results = SqlRunner.run(sql)
+    WHERE persons_sessions.reserve = FALSE
+    AND persons_sessions.session_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
     bookings = []
 
     results.each do |result|
@@ -143,8 +145,10 @@ class Session
     ON sessions.id = persons_sessions.session_id
     INNER JOIN persons
     ON persons_sessions.person_id = persons.id
-    WHERE persons_sessions.reserve = TRUE"
-    results = SqlRunner.run(sql)
+    WHERE persons_sessions.reserve = TRUE
+    AND persons_sessions.session_id = $1"
+    value = [@id]
+    results = SqlRunner.run(sql, value)
     reserves = []
 
     results.each do |result|
@@ -182,11 +186,15 @@ class Session
   end
 
   def available_count()
-    return @capacity - space_count()
+    if  @capacity - space_count() >= 0
+      return @capacity - space_count()
+    else
+      return 0
+    end
   end
 
   def percentage_full()
-    percentage_full = available_count()
+    percentage_full = (space_count() / @capacity.to_f) * 100
     return percentage_full
   end
 
