@@ -5,8 +5,6 @@
 </nav>
 <h2><%= @gym_class.name %> <span class='link-text'>on</span> <%= @session.date %> <span class='link-text'>at</span> <%= @session.start %></h2>
 
-
-
 <div id="session-gym-class">
   <div id="session-class-group">
     <div id="session-gym-class-description">
@@ -14,17 +12,33 @@
       <p class="description-para"><%= para %></p>
       <% end  %>
     </div>
-  <h3>Booked</h3>
+
+  <h3>Booked <span class='spaces-available'><%= @session.space_count %> Spaces Avaialble</span></h3>
     <div id="session-gym-class-booked">
+      <% @counter = 0 %>
       <% @session.booked().each do |booked| %>
       <div class="person-booked">
         <img class="person-booked-image" src="/member_images/<%= booked.person.photo_url %>"/>
         <p><%= booked.person.pretty_name%></p>
         <p><%= booked.date_time_added %></p>
       </div>
+      <%  @counter += 1 %>
       <% end %>
+
+      <% while @counter < @session.capacity %>
+
+      <div class="person-booked">
+        <img class="person-booked-image" src="/member_images/free.jpg"/>
+        <p>&nbsp;</p>
+        <p>space</p>
+      </div>
+
+      <% @counter += 1 %>
+      <% end %>
+
   </div>
-  <h3>Reserve</h3>
+
+  <h3 id="reserve-header">Reserve</h3>
     <div id="session-gym-class-reserve">
       <% @session.reserve().each do |reserve| %>
       <div class="person-reserve">

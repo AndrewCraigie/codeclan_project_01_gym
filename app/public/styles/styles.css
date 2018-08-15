@@ -395,6 +395,7 @@ td.item-description  {
 }
 
 #session-gym-class-booked {
+  position:relative;
   width: 100%;
   padding-bottom: 10px;
   border: 1px solid darkgray;
@@ -403,6 +404,7 @@ td.item-description  {
 }
 
 #session-gym-class-reserve {
+  position:relative;
   width: 100%;
   min-height: 100px;
   padding-bottom: 10px;
@@ -410,14 +412,26 @@ td.item-description  {
   border-radius: 5px;
   background-color: #f7d2be;
 }
+#reserve-header {
+  width: 100%;
+  clear:both;
+}
 
 .person-booked, .person-reserve {
   position: relative;
-  display:block;
+  display: inline-block;
   width: 80px;
+  height: 130px;
   margin: 5px;
 
-
+}
+.placeholder {
+  position: relative;
+  display: inline-block;
+  width: 76px;
+  height: 129px;
+  margin: 5px;
+  background-color: white;
 }
 .person-booked p, .person-reserve p{
     font-size: 10px;
@@ -427,6 +441,10 @@ td.item-description  {
     margin:2px;
     padding:0;
 
+}
+
+.spaces-available {
+  color: darkorange;
 }
 .person-booked {
 

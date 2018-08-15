@@ -22,6 +22,15 @@ get '/gym_classes/new' do
   erb('gym_classes/new'.to_sym)
 end
 
+
+
+# EDIT
+get '/gym_classes/show/:id/edit' do
+  @intensities = Intensity.all()
+  @gym_class = GymClass.find_by_id(params['id'].to_i)
+  erb ("gym_classes/edit".to_sym)
+end
+
 # DESTROY
 post '/gym_classes/:id/delete' do
   @gym_class = GymClass.find_by_id(params[:id])
@@ -29,12 +38,7 @@ post '/gym_classes/:id/delete' do
   redirect ('/gym_classes')
 end
 
-# EDIT
-get '/gym_classes/:id/edit' do
-  @intensities = Intensity.all()
-  @gym_class = GymClass.find_by_id(params['id'].to_i)
-  erb ("gym_classes/edit".to_sym)
-end
+
 
 
 # SHOW route

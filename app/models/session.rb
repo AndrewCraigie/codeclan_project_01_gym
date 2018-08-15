@@ -157,6 +157,15 @@ class Session
     return reserves
   end
 
+  def space_count()
+    sql = "SELECT COUNT(session_id)
+          FROM persons_sessions
+          WHERE session_id = $1"
+    value = [@id]
+    result = SqlRunner.run(sql, value).first
+    return result['count'].to_i
+  end
+
   def spaces_available()
     sql = "SELECT COUNT(session_id)
           FROM persons_sessions
@@ -164,15 +173,15 @@ class Session
     value = [@id]
     result = SqlRunner.run(sql, value).first
 
-    if result['count'].to_i < @capacity
-      puts "result: #{result['count'].to_i} #{@capacity} true"
+    if space_count < @capacity
       return true
     else
-      puts "result: #{result['count'].to_i} #{@capacity} false"
       return false
     end
 
   end
+
+
 
 
 end
