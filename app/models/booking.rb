@@ -21,7 +21,6 @@ class Booking
 
   # --- Instance methods
   def save()
-    puts "Booking initialize reserve: #{@reserve}"
     person_session = PersonSession.new({
       'date_time_added' => @date_time_added,
       'reserve' => @reserve.to_s,

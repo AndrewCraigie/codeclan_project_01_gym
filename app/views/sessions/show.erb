@@ -77,7 +77,11 @@
       <p id="membership-start-date"><span class="date-label">Start:</span> <%= @person.membership.pretty_start_date%></p>
       <p id="membership-end-date"><span class="date-label">End:</span> <%= @person.membership.pretty_end_date%></p>
       <p id="membership-membership-type"><span class="membership-label">Membership Type: </span><%= @person.membership.type.name.upcase %></p>
+      <% if @person_session == [] || @person_session == nil %>
       <input type="submit" name="submit" value="Book Member in Session">
+      <% else %>
+        <p id="person-already-booked">Already booked</p>
+      <% end %>
     </form>
 
     <% else %>
@@ -86,7 +90,7 @@
     <% end %>
 
   </div>
-  <%= @params_inspect %>
+  
 
 
 </div>

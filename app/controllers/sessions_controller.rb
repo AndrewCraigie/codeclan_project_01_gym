@@ -37,12 +37,21 @@ end
 # SHOW route
 get '/sessions/show/:id/:class_id/:person_id' do
 
+  @person_session = nil
+
   @message = ""
 
   if params['person_id_find'] != nil && params['person_id_find'] != ""
     @person = Person.find_by_id(params['person_id_find'])
     if @person != nil
       @message = "Member Found"
+
+      @person_session = PersonSession.find_by_person_session(params['person_id_find'], params[:id])
+
+      if @person_session != []
+        @message += "\nAlready booked in Class"
+      end
+
     else
       @message  = "No member with that ID can be found\n
                   Please enter a valid Member ID"
@@ -59,7 +68,6 @@ end
 
 post '/sessions/show/:id/:class_id/remove/persons' do
 
-  @params_inspect = params.inspect
 
   @session = Session.find_by_id(params['id'])
   @gym_class = GymClass.find_by_id(params['class_id'])
@@ -80,8 +88,12 @@ post '/sessions/show/:id/:class_id/:person_id' do
   @gym_class = GymClass.find_by_id(params['class_id'])
   @person = Person.find_by_id(params['person_id'])
   reserve = !@session.spaces_available()
+
   @booking = Booking.new(@person, @session, DateTime.now().to_s, reserve.to_s)
   @booking.save()
+
+  @person_session = PersonSession.find_by_person_session(@person.id, @session.id)
+
   erb('sessions/show'.to_sym)
 
 end
