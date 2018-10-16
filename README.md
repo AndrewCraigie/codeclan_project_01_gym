@@ -1,1 +1,1 @@
-# CodeClan Project 1 - Gym
+# Gym Class Booking System
